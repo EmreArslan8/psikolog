@@ -137,8 +137,8 @@ if ('IntersectionObserver' in window) {
 // FORM_ENDPOINT: Web3Forms (https://api.web3forms.com/submit) veya Formspree
 // (https://formspree.io/f/xxxxxxx) uç noktası. Web3Forms kullanılacaksa
 // FORM_ACCESS_KEY de doldurulmalıdır. Boş bırakılırsa form gönderilmez.
-const FORM_ENDPOINT = '';
-const FORM_ACCESS_KEY = '';
+const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+const FORM_ACCESS_KEY = '2e9760cc-ef97-4432-9e14-367a3f4d6ae8';
 
 const contactForm = document.querySelector('[data-contact-form]');
 if (contactForm) {
@@ -163,7 +163,7 @@ if (contactForm) {
     if (contactForm.elements._gotcha && contactForm.elements._gotcha.value) return;
 
     if (!FORM_ENDPOINT) {
-      setStatus('Form altyapısı henüz bağlanmadı. Bu arada iletisim@selinunal.com adresine yazabilirsiniz.', 'error');
+      setStatus('Form altyapısı henüz bağlanmadı. Bu arada psk.selinunal@gmail.com adresine yazabilirsiniz.', 'error');
       return;
     }
 
@@ -185,7 +185,7 @@ if (contactForm) {
       contactForm.reset();
       setStatus('Mesajınız iletildi. En kısa sürede size dönüş yapacağım.');
     } catch (error) {
-      setStatus('Mesaj gönderilemedi. Lütfen iletisim@selinunal.com adresine yazın.', 'error');
+      setStatus('Mesaj gönderilemedi. Lütfen psk.selinunal@gmail.com adresine yazın.', 'error');
     } finally {
       submitButton.removeAttribute('aria-busy');
     }
@@ -229,4 +229,3 @@ if (counters.length && !window.matchMedia('(prefers-reduced-motion: reduce)').ma
   }, { threshold: 0.6 });
   counters.forEach((el) => countObserver.observe(el));
 }
-

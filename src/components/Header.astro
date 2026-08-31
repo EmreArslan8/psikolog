@@ -6,16 +6,150 @@ const cls = (name) => (active === name ? 'active' : undefined);
 <header class="site-header">
   <div class="header-inner">
     <a class="brand brand-lockup" href="/" aria-label="Psikolog Selin Ünal — Ana sayfa">
-      <img class="brand-mark" src="/assets/logo-mark.svg" width="42" height="42" alt="" aria-hidden="true">
-      <span class="brand-copy"><small>Psikolog</small><strong>Selin Ünal</strong></span>
+      <span class="brand-copy">Psikolog · Aile Danışmanı · Selin Ünal</span>
     </a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span><span class="sr-only">Menüyü aç</span></button>
     <nav id="site-nav" class="site-nav" aria-label="Ana menü">
       <a class={cls('anasayfa')} href="/">Ana Sayfa</a>
       <a href="/#hakkimda">Hakkımda</a>
       <a href="/#yaklasimlar">Hizmetler</a>
-      <a href="/#calisma-alanlari">Görüşme Biçimi</a>
+      <a href="/#gorusme-bicimi">Görüşme Biçimi</a>
       <a class="nav-button" href="/#iletisim">İletişim Formu</a>
     </nav>
   </div>
 </header>
+
+<style>
+  .site-header {
+    width: 100%;
+    height: 88px;
+    padding: 0 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: block;
+    border-bottom: 1px solid rgba(95, 116, 95, .12);
+    background: rgba(251, 250, 246, .94);
+    box-shadow: 0 8px 28px rgba(48, 53, 46, .06);
+    backdrop-filter: blur(18px) saturate(125%);
+  }
+
+  .header-inner {
+    width: min(1280px, 100%);
+    height: 100%;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 34px;
+  }
+
+  .brand-lockup {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    color: var(--brand-deep);
+    white-space: nowrap;
+  }
+
+  .brand-copy { color: var(--ink); font-family: var(--serif); font-size: 25px; font-weight: 400; line-height: 1; letter-spacing: 0; }
+
+  .site-nav {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .site-nav > a:not(.nav-button) {
+    padding: 10px 12px;
+    border-radius: 999px;
+    line-height: 1.2;
+    white-space: nowrap;
+    transition: color .2s, background .2s;
+  }
+
+  .site-nav > a:not(.nav-button)::after { display: none; }
+  .site-nav > a:not(.nav-button):hover { background: rgba(95, 116, 95, .09); }
+  .site-nav > a:not(.nav-button).active { color: var(--brand); font-weight: 600; }
+
+  .site-nav .nav-button {
+    min-height: 46px;
+    margin-left: 10px;
+    padding: 11px 23px;
+    white-space: nowrap;
+  }
+
+  .menu-toggle { display: none; }
+
+  @media (max-width: 1040px) and (min-width: 851px) {
+    .site-header { padding-inline: 18px; }
+    .header-inner { gap: 16px; }
+    .brand-copy { font-size: 18px; }
+    .site-nav { font-size: 11.5px; }
+    .site-nav > a:not(.nav-button) { padding-inline: 8px; }
+    .site-nav .nav-button { min-height: 42px; margin-left: 4px; padding-inline: 16px; font-size: 10px; }
+  }
+
+  @media (max-width: 850px) {
+    .site-header {
+      height: 68px;
+      padding-inline: 18px;
+      backdrop-filter: none;
+    }
+
+    .header-inner { width: 100%; gap: 18px; }
+    .brand-copy { font-size: 14px; }
+
+    .menu-toggle {
+      width: 42px;
+      height: 42px;
+      padding: 9px;
+      position: relative;
+      z-index: 120;
+      display: grid;
+      align-content: center;
+      gap: 5px;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .menu-toggle > span:not(.sr-only) {
+      width: 24px;
+      height: 1.5px;
+      display: block;
+      background: currentColor;
+      transition: transform .25s, opacity .25s;
+    }
+
+    .menu-toggle[aria-expanded="true"] > span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] > span:nth-child(2) { opacity: 0; }
+    .menu-toggle[aria-expanded="true"] > span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .site-nav {
+      position: fixed;
+      inset: 0;
+      z-index: 110;
+      padding: 100px 26px 42px;
+      visibility: hidden;
+      opacity: 0;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+      overflow-y: auto;
+      background: var(--paper);
+      transition: opacity .25s, visibility .25s;
+    }
+
+    .site-nav.is-open { visibility: visible; opacity: 1; }
+    .site-nav > a:not(.nav-button) { padding: 8px 18px; font-family: var(--serif); font-size: 29px; font-weight: 400; }
+    .site-nav .nav-button { min-height: 48px; margin: 16px 0 0; padding-inline: 28px; }
+  }
+</style>

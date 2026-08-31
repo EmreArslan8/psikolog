@@ -1,6 +1,40 @@
 ---
 ---
   <section class="map-section" aria-label="Konum">
-    <iframe title="Psikolog Selin Ünal ofis konumu — Karabük" src="https://www.google.com/maps?q=Karab%C3%BCk%20Merkez%2C%20Karab%C3%BCk%2C%20T%C3%BCrkiye&amp;hl=tr&amp;z=14&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe title="Psikolog Selin Ünal ofis konumu — Karabük" src="https://www.google.com/maps?q=Karab%C3%BCk%20Merkez%2C%20Karab%C3%BCk%2C%20T%C3%BCrkiye&amp;hl=tr&amp;z=14&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
     <div class="map-card reveal"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><div><span>Ofis Konumu</span><strong>Karabük Merkez</strong><p>Karabük ve çevresinde yüz yüze görüşmeler randevu ile gerçekleştirilir; Türkiye’nin her yerinden online görüşme yapılabilir.</p></div></div>
   </section>
+
+<style>
+  .map-section {
+    width: 100%;
+    height: clamp(440px, 48vw, 620px);
+    position: relative;
+    overflow: hidden;
+    background: var(--mist);
+  }
+
+  .map-section iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+    filter: grayscale(.35) sepia(.08) saturate(.75);
+    opacity: .94;
+  }
+
+  .map-card {
+    left: max(24px, calc((100vw - 1280px) / 2));
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+  }
+
+  .map-card.is-visible { transform: translateY(-50%); }
+
+  @media (max-width: 580px) {
+    .map-section { height: 500px; }
+    .map-card { top: auto; bottom: 18px; transform: none; }
+    .map-card.is-visible { transform: none; }
+  }
+</style>

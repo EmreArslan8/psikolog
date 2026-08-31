@@ -19,21 +19,24 @@
         <a href="index.html">Ana Sayfa</a>
         <a href="ben-kimim.html">Ben Kimim</a>
         <a href="index.html#yaklasimlar">Hizmetler</a>
-        <a href="index.html#calisma-alanlari">Görüşme Biçimi</a>
+        <a href="index.html#gorusme-bicimi">Görüşme Biçimi</a>
         <a href="index.html#iletisim">İletişim</a>
         <a href="kvkk.html">Aydınlatma Metni</a>
       </nav>
       <nav class="footer-col" aria-label="Hizmetler">
         <h3>Hizmetler</h3>
         <a href="index.html#yaklasimlar">Bireysel Terapi</a>
-        <a href="index.html#yaklasimlar">Aile ve Çift Danışmanlığı</a>
         <a href="index.html#yaklasimlar">Oyun Terapisi</a>
-        <a href="index.html#yaklasimlar">Çocuk-Ergen Danışmanlığı</a>
-        <a href="index.html#calisma-alanlari">Online Terapi</a>
+        <a href="index.html#yaklasimlar">MOXO Dikkat Testi</a>
+        <a href="index.html#yaklasimlar">Aile ve Çift Danışmanlığı</a>
+        <a href="index.html#yaklasimlar">Montessori Eğitimi</a>
+        <a href="index.html#yaklasimlar">P4C Çocuklar İçin Felsefe</a>
+        <a href="index.html#gorusme-bicimi">Online Terapi</a>
       </nav>
       <div class="footer-col footer-contact">
         <h3>İletişim</h3>
-        <a href="mailto:iletisim@selinunal.com"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> iletisim@selinunal.com</a>
+        <a href="mailto:psk.selinunal@gmail.com"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> psk.selinunal@gmail.com</a>
+        <a href="https://www.instagram.com/psk.selinunal/" target="_blank" rel="noopener"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg> @psk.selinunal</a>
         <p><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> Karabük Merkez, Karabük</p>
         <p><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Hafta içi 09.00–19.00 · Cumartesi 10.00–16.00</p>
         <a class="footer-cta" href="index.html#iletisim">Randevu için yazın <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
@@ -44,3 +47,49 @@
       <p>© <span data-year></span> Psikolog Selin Ünal — Karabük. Tüm hakları saklıdır.</p>
     </div>
   </footer>
+
+<style>
+  footer.site-footer > .footer-inner {
+    width: min(1280px, calc(100% - 48px));
+    margin-inline: auto;
+    padding: 62px 0 44px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, .62fr) minmax(0, .82fr) minmax(0, 1fr);
+    gap: clamp(32px, 4vw, 58px);
+    align-items: start;
+    justify-items: start;
+  }
+
+  .footer-brand,
+  .footer-col {
+    width: 100%;
+    min-width: 0;
+    text-align: left;
+  }
+
+  .footer-col { align-items: flex-start; }
+  .footer-contact a,
+  .footer-contact p {
+    width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  @media (max-width: 1120px) {
+    footer.site-footer > .footer-inner {
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+      gap: 42px 58px;
+    }
+  }
+
+  @media (max-width: 620px) {
+    footer.site-footer > .footer-inner {
+      width: calc(100% - 36px);
+      padding: 42px 0 30px;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .footer-brand,
+    .footer-contact { grid-column: auto; }
+  }
+</style>
