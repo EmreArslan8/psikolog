@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Ben Kimim | Karabük Psikolog Selin Ünal"
+  description="Karabük psikolog Selin Ünal'ın eğitim geçmişi, terapi yaklaşımı ve çalışma alanları. Karabük merkezde yüz yüze, Türkiye genelinde online psikolojik danışmanlık."
+  canonical="/ben-kimim.html"
+  ogDescription="Karabük'te çalışan psikolog Selin Ünal'ın eğitimi, yaklaşımı ve çalışma alanları."
+  robots="index, follow, max-image-preview:large"
+  active="ben-kimim"
+>
+  <script type="application/ld+json" slot="head" is:inline set:html={`
+  {"@context":"https://schema.org","@type":"ProfilePage","url":"https://selinunal.com/ben-kimim.html","inLanguage":"tr-TR","mainEntity":{"@type":"Person","@id":"https://selinunal.com/#selin","name":"Selin Ünal","jobTitle":"Psikolog","description":"Karabük'te bireysel terapi, aile ve çift danışmanlığı, oyun terapisi ve çocuk-ergen danışmanlığı sunan psikolog.","workLocation":{"@type":"Place","name":"Karabük","address":{"@type":"PostalAddress","addressLocality":"Karabük","addressRegion":"Karabük","addressCountry":"TR"}},"worksFor":{"@type":"Psychologist","@id":"https://selinunal.com/#praxis","name":"Psikolog Selin Ünal","url":"https://selinunal.com/"}}}
+`} />
+    <section class="about-hero shell">
+      <div class="about-photo reveal"><div class="photo-placeholder" role="img" aria-label="Selin Ünal portre fotoğrafı için yer tutucu"><b>SÜ</b><small>Portre fotoğrafı</small></div></div>
+      <div class="about-copy reveal reveal-delay"><p class="eyebrow"><span></span> Ben kimim?</p><h1>Merhaba,<br><em>ben Selin.</em></h1><p class="lead">İnsanın kendini iyileştirme kapasitesine ve güvenli bir ilişkinin dönüştürücü gücüne inanıyorum.</p></div>
+    </section>
+
+    <section class="bio-section"><div class="shell bio-grid">
+      <h2 class="reveal">Bilimsel temelli,<br><em>insana özgü.</em></h2>
+      <div class="bio-text reveal"><p>Terapiyi, kişinin kendi iç dünyasını daha yakından tanıdığı; duygularına, ihtiyaçlarına ve ilişkilerine yeni bir yerden bakabildiği güvenli bir süreç olarak görüyorum.</p><p>Çalışmalarımda kişiyi tek bir belirti üzerinden değil; yaşam öyküsü, ilişkileri, kaynakları ve içinde bulunduğu koşullarla bir bütün olarak anlamaya özen gösteriyorum.</p><p>Terapi odasında samimi, eşitlikçi ve yargısız bir ilişki kurmayı; sürecin hedeflerini ve ritmini danışanla birlikte belirlemeyi önemsiyorum.</p></div>
+    </div></section>
+
+    <section class="education shell">
+      <div class="section-top reveal"><div><p class="eyebrow"><span></span> Eğitim ve yaklaşım</p><h2>Öğrenmeye devam eden<br><em>bir yolculuk.</em></h2></div></div>
+      <div class="education-list reveal"><div><span>Yüksek Lisans</span><p><strong>Uzmanlık eğitimi</strong>Üniversite ve program bilgisi eklenecek</p></div><div><span>Lisans</span><p><strong>Psikoloji eğitimi</strong>Üniversite bilgisi eklenecek</p></div><div><span>Yaklaşım</span><p><strong>Terapi yaklaşımı</strong>Eğitim ve uygulama bilgileri eklenecek</p></div><div><span>Çalışma alanı</span><p><strong>Danışan grupları</strong>Çalışma alanları bilgisi eklenecek</p></div></div>
+    </section>
+
+    <section class="values-band"><div class="shell"><p class="eyebrow reveal"><span></span> Çalışma ilkelerim</p><div class="value-list"><div class="reveal"><span>01</span><h3>Güven</h3><p>Sınırlarınıza saygı duyulan, kendiniz olabildiğiniz bir alan.</p></div><div class="reveal"><span>02</span><h3>Merak</h3><p>Yargılamak yerine anlamaya yönelen açık ve şefkatli bir bakış.</p></div><div class="reveal"><span>03</span><h3>İş birliği</h3><p>Sürecin hedeflerini ve ritmini birlikte belirlediğimiz eşit bir ilişki.</p></div></div></div></section>
+
+    <section class="contact-band"><div class="shell reveal"><p>Online veya yüz yüze psikolojik danışmanlık için</p><h2>Hazır olduğunuzda<br><em>konuşabiliriz.</em></h2><a class="button button-light" href="mailto:iletisim@selinunal.com">Randevu Talep Edin <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></div></section>
+</Base>

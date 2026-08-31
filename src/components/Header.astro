@@ -1,0 +1,21 @@
+---
+// Üst menü. active: hangi sayfanın vurgulanacağı ("anasayfa" | "ben-kimim" | null)
+const { active = null } = Astro.props;
+const cls = (name) => (active === name ? 'active' : undefined);
+---
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand brand-lockup" href="/" aria-label="Psikolog Selin Ünal — Ana sayfa">
+      <img class="brand-mark" src="/assets/logo-mark.svg" width="42" height="42" alt="" aria-hidden="true">
+      <span class="brand-copy"><small>Psikolog</small><strong>Selin Ünal</strong></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span><span class="sr-only">Menüyü aç</span></button>
+    <nav id="site-nav" class="site-nav" aria-label="Ana menü">
+      <a class={cls('anasayfa')} href="/">Ana Sayfa</a>
+      <a href="/#hakkimda">Hakkımda</a>
+      <a href="/#yaklasimlar">Hizmetler</a>
+      <a href="/#calisma-alanlari">Görüşme Biçimi</a>
+      <a class="nav-button" href="/#iletisim">İletişim Formu</a>
+    </nav>
+  </div>
+</header>

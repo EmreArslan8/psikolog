@@ -6,20 +6,20 @@
    ============================================================ */
 :root{
   /* — Renk paleti — */
-  --brand-deep:#4d2867;
-  --brand:#704098;
-  --brand-soft:#c6a0df;
-  --brand-tint:#efe6f8;
-  --brand-wash:#f7f3fb;
-  --ink:#29232e;
-  --ink-soft:#5b5560;
-  --ink-mute:#8a8292;
-  --paper:#faf8fc;
-  --surface:#fff;
-  --mist:#f1eff4;
-  --line:rgba(112,64,142,.12);
-  --brand-rgb:112,64,142;
-  --ink-rgb:41,35,46;
+  --brand-deep:#405242;
+  --brand:#5f745f;
+  --brand-soft:#657b65;
+  --brand-tint:#e3e9dc;
+  --brand-wash:#f1f2e8;
+  --ink:#30352e;
+  --ink-soft:#5c6359;
+  --ink-mute:#858b7e;
+  --paper:#f7f3e8;
+  --surface:#fffdf7;
+  --mist:#e8eadf;
+  --line:rgba(95,116,95,.15);
+  --brand-rgb:95,116,95;
+  --ink-rgb:48,53,46;
 
   /* — Font aileleri — */
   --serif:"Newsreader",Georgia,serif;
