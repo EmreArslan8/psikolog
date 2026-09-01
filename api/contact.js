@@ -65,37 +65,91 @@ function isRateLimited(req) {
 }
 
 function renderEmail({ name, email, preference, topic, message }) {
-  const rows = [
-    ['Ad Soyad', name],
-    ['E-posta', email],
-    ['Görüşme Tercihi', preference || 'Belirtilmedi'],
-    ['Başvuru Konusu', topic || 'Belirtilmedi'],
-  ];
-  const detailRows = rows.map(([label, value]) => `
-    <tr>
-      <td style="padding:10px 0;color:#858b7e;font-size:12px;vertical-align:top;width:150px">${label}</td>
-      <td style="padding:10px 0;color:#30352e;font-size:14px;vertical-align:top">${escapeHtml(value)}</td>
-    </tr>`).join('');
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
+  const safePreference = escapeHtml(preference || 'Belirtilmedi');
+  const safeTopic = escapeHtml(topic || 'Belirtilmedi');
+  const safeMessage = escapeHtml(message);
 
   return `<!doctype html>
   <html lang="tr">
-    <body style="margin:0;background:#f1f2e8;font-family:Arial,sans-serif;color:#30352e">
-      <div style="padding:32px 16px">
-        <div style="max-width:620px;margin:0 auto;overflow:hidden;border:1px solid #e3e9dc;border-radius:20px;background:#fffdf7">
-          <div style="padding:28px 32px;background:#5f745f;color:#fffdf7">
-            <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.8">selinunal.com</div>
-            <h1 style="margin:8px 0 0;font-family:Georgia,serif;font-size:28px;font-weight:400">Yeni randevu talebi</h1>
-          </div>
-          <div style="padding:26px 32px 32px">
-            <table role="presentation" style="width:100%;border-collapse:collapse">${detailRows}</table>
-            <div style="margin-top:18px;padding-top:22px;border-top:1px solid #e3e9dc">
-              <div style="margin-bottom:8px;color:#858b7e;font-size:12px">Mesaj</div>
-              <div style="white-space:pre-wrap;color:#30352e;font-size:14px;line-height:1.7">${escapeHtml(message)}</div>
-            </div>
-            <a href="mailto:${encodeURIComponent(email)}" style="display:inline-block;margin-top:26px;padding:13px 22px;border-radius:999px;background:#5f745f;color:#fffdf7;font-size:13px;text-decoration:none">Danışana yanıt ver</a>
-          </div>
-        </div>
-      </div>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <style>
+        @media only screen and (max-width: 620px) {
+          .email-shell { width: 100% !important; }
+          .content-pad { padding-left: 22px !important; padding-right: 22px !important; }
+          .detail-cell { display: block !important; width: 100% !important; box-sizing: border-box !important; }
+          .detail-gap { height: 10px !important; }
+          .title { font-size: 30px !important; line-height: 1.12 !important; }
+        }
+      </style>
+    </head>
+    <body style="margin:0;padding:0;background:#eef0e8;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#2f372f">
+      <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent">${safeName} tarafından yeni bir randevu talebi gönderildi.</div>
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%;background:#eef0e8;border-collapse:collapse">
+        <tr>
+          <td align="center" style="padding:38px 14px">
+            <table role="presentation" class="email-shell" width="640" cellspacing="0" cellpadding="0" border="0" style="width:640px;max-width:640px;background:#fffdf8;border:1px solid #dfe4d9;border-radius:24px;overflow:hidden;border-collapse:separate;box-shadow:0 14px 36px rgba(55,67,54,.08)">
+              <tr>
+                <td class="content-pad" style="padding:30px 38px 34px;background:#617861;color:#fffdf8">
+                  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%;border-collapse:collapse">
+                    <tr>
+                      <td style="font-family:Georgia,'Times New Roman',serif;font-size:17px;letter-spacing:.02em;color:#fffdf8">Selin Ünal</td>
+                      <td align="right">
+                        <span style="display:inline-block;padding:7px 11px;border:1px solid rgba(255,255,255,.32);border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fffdf8">Yeni başvuru</span>
+                      </td>
+                    </tr>
+                  </table>
+                  <div style="height:42px;line-height:42px">&nbsp;</div>
+                  <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#dce6d8">Randevu formu bildirimi</div>
+                  <h1 class="title" style="margin:8px 0 0;font-family:Georgia,'Times New Roman',serif;font-size:38px;line-height:1.12;font-weight:400;letter-spacing:-.02em;color:#fffdf8">Yeni bir görüşme talebi var.</h1>
+                </td>
+              </tr>
+              <tr>
+                <td class="content-pad" style="padding:32px 38px 38px">
+                  <div style="margin-bottom:6px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8a9487">Başvuru sahibi</div>
+                  <div style="font-family:Georgia,'Times New Roman',serif;font-size:28px;line-height:1.25;color:#2f372f">${safeName}</div>
+                  <a href="mailto:${safeEmail}" style="display:inline-block;margin-top:6px;font-size:14px;line-height:1.5;color:#617861;text-decoration:underline;text-decoration-color:#bdc9b8;text-underline-offset:3px">${safeEmail}</a>
+
+                  <div style="height:26px;line-height:26px">&nbsp;</div>
+                  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%;border-collapse:collapse">
+                    <tr>
+                      <td class="detail-cell" width="49%" style="width:49%;padding:17px 18px;background:#f3f4ed;border:1px solid #e4e8df;border-radius:14px;vertical-align:top">
+                        <div style="margin-bottom:7px;font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:#8a9487">Görüşme tercihi</div>
+                        <div style="font-size:15px;line-height:1.45;color:#354035">${safePreference}</div>
+                      </td>
+                      <td class="detail-gap" width="2%" style="width:2%">&nbsp;</td>
+                      <td class="detail-cell" width="49%" style="width:49%;padding:17px 18px;background:#f3f4ed;border:1px solid #e4e8df;border-radius:14px;vertical-align:top">
+                        <div style="margin-bottom:7px;font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:#8a9487">Başvuru konusu</div>
+                        <div style="font-size:15px;line-height:1.45;color:#354035">${safeTopic}</div>
+                      </td>
+                    </tr>
+                  </table>
+
+                  <div style="margin-top:28px;padding:24px 25px;background:#faf7ef;border-left:4px solid #c8a56a;border-radius:4px 14px 14px 4px">
+                    <div style="margin-bottom:10px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#97876b">Danışanın mesajı</div>
+                    <div style="white-space:pre-wrap;font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.7;color:#303830">${safeMessage}</div>
+                  </div>
+
+                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin-top:28px;border-collapse:separate">
+                    <tr>
+                      <td align="center" style="background:#617861;border-radius:999px">
+                        <a href="mailto:${safeEmail}" style="display:inline-block;padding:14px 23px;font-size:13px;font-weight:700;line-height:1;color:#ffffff;text-decoration:none">E-posta ile yanıtla&nbsp;&nbsp;→</a>
+                      </td>
+                    </tr>
+                  </table>
+
+                  <div style="margin-top:30px;padding-top:20px;border-top:1px solid #e5e8df;font-size:11px;line-height:1.7;color:#92998f">
+                    Bu bildirim <a href="https://selinunal.com" style="color:#6f806d;text-decoration:none">selinunal.com</a> iletişim formundan otomatik olarak oluşturuldu. Yanıtladığınızda e-posta doğrudan danışana gider.
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
     </body>
   </html>`;
 }
