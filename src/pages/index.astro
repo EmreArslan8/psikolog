@@ -1,0 +1,218 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Hakkimda from '../components/Hakkimda.astro';
+import Hizmetler from '../components/Hizmetler.astro';
+import UygulananTestler from '../components/UygulananTestler.astro';
+import GorusmeBicimi from '../components/GorusmeBicimi.astro';
+import Iletisim from '../components/Iletisim.astro';
+import Harita from '../components/Harita.astro';
+---
+<Base
+  title="Karabük Psikolog Selin Ünal | Yüz Yüze ve Online"
+  description="Karabük psikolog Selin Ünal ile bireysel, çocuk-ergen ve aile danışmanlığı. Yüz yüze ve online görüşme seçenekleri için iletişime geçin. Randevu için yazın."
+  canonical="/"
+  ogDescription="Karabük’te yüz yüze ve online psikolojik danışmanlık. Bireysel, çocuk-ergen, oyun terapisi ile aile ve çift danışmanlığı için iletişime geçin."
+  robots="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  active="anasayfa"
+>
+  <script type="application/ld+json" slot="head" is:inline set:html={`
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Psychologist",
+        "LocalBusiness",
+        "ProfessionalService"
+      ],
+      "@id": "https://selinunal.com/#praxis",
+      "name": "Psikolog Selin Ünal",
+      "alternateName": "Karabük Psikolog Selin Ünal",
+      "description": "Karabük merkezde bireysel terapi, aile ve çift danışmanlığı, oyun terapisi ile çocuk-ergen danışmanlığı sunan psikolog.",
+      "url": "https://selinunal.com/",
+      "image": "https://selinunal.com/assets/selin-unal-about.webp",
+      "email": "psk.selinunal@gmail.com",
+      "sameAs": [
+        "https://www.instagram.com/psk.selinunal/"
+      ],
+      "currenciesAccepted": "TRY",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Karabük",
+        "addressRegion": "Karabük",
+        "addressCountry": "TR"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Karabük"
+        },
+        {
+          "@type": "City",
+          "name": "Safranbolu"
+        },
+        {
+          "@type": "City",
+          "name": "Eskipazar"
+        },
+        {
+          "@type": "City",
+          "name": "Yenice"
+        },
+        {
+          "@type": "City",
+          "name": "Eflani"
+        },
+        {
+          "@type": "City",
+          "name": "Ovacık"
+        },
+        {
+          "@type": "Country",
+          "name": "Türkiye"
+        }
+      ],
+      "availableLanguage": {
+        "@type": "Language",
+        "name": "Türkçe"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "10:00",
+          "closes": "16:00"
+        }
+      ],
+      "founder": {
+        "@id": "https://selinunal.com/#selin"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Psikolojik danışmanlık hizmetleri",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Bireysel Terapi",
+              "areaServed": "Karabük"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Oyun Terapisi",
+              "areaServed": "Karabük"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "MOXO Dikkat Testi",
+              "areaServed": "Karabük"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Aile ve Çift Danışmanlığı",
+              "areaServed": "Karabük"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Montessori Eğitimi",
+              "areaServed": "Karabük"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "P4C Çocuklar İçin Felsefe",
+              "areaServed": "Karabük"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://selinunal.com/#selin",
+      "name": "Selin Ünal",
+      "jobTitle": "Psikolog, Aile Danışmanı",
+      "sameAs": [
+        "https://www.instagram.com/psk.selinunal/"
+      ],
+      "worksFor": {
+        "@id": "https://selinunal.com/#praxis"
+      },
+      "knowsAbout": [
+        "Bilişsel Davranışçı Terapi",
+        "Aile Danışmanlığı",
+        "Çocuk ve Ergen Psikolojisi"
+      ],
+      "workLocation": {
+        "@type": "Place",
+        "name": "Karabük",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Karabük",
+          "addressCountry": "TR"
+        }
+      },
+      "url": "https://selinunal.com/ben-kimim"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://selinunal.com/#website",
+      "url": "https://selinunal.com/",
+      "name": "Psikolog Selin Ünal",
+      "inLanguage": "tr-TR",
+      "publisher": {
+        "@id": "https://selinunal.com/#praxis"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://selinunal.com/#webpage",
+      "url": "https://selinunal.com/",
+      "name": "Karabük Psikolog Selin Ünal | Yüz Yüze ve Online",
+      "isPartOf": {
+        "@id": "https://selinunal.com/#website"
+      },
+      "about": {
+        "@id": "https://selinunal.com/#praxis"
+      },
+      "inLanguage": "tr-TR"
+    }
+  ]
+}
+`} />
+  <Hero />
+  <Hakkimda />
+  <Hizmetler />
+  <UygulananTestler />
+  <GorusmeBicimi />
+  <Iletisim />
+  <Harita />
+</Base>

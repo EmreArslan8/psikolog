@@ -1,0 +1,92 @@
+@font-face{
+  font-family:"DM Sans";
+  font-style:normal;
+  font-weight:400 600;
+  font-display:swap;
+  src:url("/fonts/dm-sans-latin-ext.woff2") format("woff2");
+}
+
+@font-face{
+  font-family:"Newsreader";
+  font-style:normal;
+  font-weight:400;
+  font-display:swap;
+  src:url("/fonts/newsreader-latin-ext.woff2") format("woff2");
+}
+
+@font-face{
+  font-family:"Newsreader";
+  font-style:italic;
+  font-weight:400;
+  font-display:swap;
+  src:url("/fonts/newsreader-italic-latin-ext.woff2") format("woff2");
+}
+
+/* ============================================================
+   theme.css — Tasarım token'ları (tek kaynak)
+   Tüm sayfalar (index, ben-kimim, kvkk, 404) buradan beslenir.
+   Değerler BURADA tanımlanır; styles.css yalnızca var() ile kullanır.
+   styles.css'ten ÖNCE yüklenmelidir.
+   ============================================================ */
+:root{
+  /* — Renk paleti — */
+  --brand-deep:#405242;
+  --brand:#5f745f;
+  --brand-soft:#657b65;
+  --brand-tint:#e3e9dc;
+  --brand-wash:#f1f2e8;
+  --ink:#30352e;
+  --ink-soft:#5c6359;
+  --ink-mute:#858b7e;
+  --paper:#fbfaf6;
+  --surface:#fffdf7;
+  --mist:#e8eadf;
+  --line:rgba(95,116,95,.15);
+  --brand-rgb:95,116,95;
+  --ink-rgb:48,53,46;
+
+  /* — Font aileleri — */
+  --serif:"Newsreader",Georgia,serif;
+  --sans:"DM Sans",sans-serif;
+
+  /* — Tipografi ölçeği —
+     clamp(MIN, AKIŞKAN, MAKS): mobil → tablet → masaüstü arası değer
+     kesintisiz akar, ayrıca breakpoint yazmaya gerek kalmaz. */
+  --text-display:clamp(52px,6.5vw + 6px,86px);  /* Hero / ana başlık (serif) */
+  --text-h1:clamp(44px,5vw,62px);               /* Sayfa H1 — legal, 404 (serif) */
+  --text-h2:var(--type-section-title);           /* Bölüm başlığı (serif) */
+  --text-h3:var(--type-card-title);              /* Kart / alt başlık (serif) */
+  --text-lead:clamp(19px,1.4vw + 6px,25px);     /* Giriş / spot metni (serif) */
+  --text-quote:clamp(20px,2vw,28px);            /* Alıntı (serif) */
+  --text-body:15px;                             /* Gövde (sans) */
+  --text-body-sm:var(--type-list);               /* Küçük gövde (sans) */
+  --text-meta:var(--type-meta);                  /* Meta / açıklama (sans) */
+  --text-micro:11px;                            /* En küçük metin (sans) */
+  --text-eyebrow:12px;                          /* Üst etiket — BÜYÜK HARF (sans) */
+
+  /* — Semantik metin rolleri —
+     Componentler doğrudan px kullanmak yerine bu ortak rolleri kullanır. */
+  --type-section-title:clamp(40px,4.2vw,58px);  /* Tüm bölüm H2 başlıkları */
+  --type-card-title:clamp(22px,1.6vw + 8px,28px); /* Kart / içerik başlıkları */
+  --type-subtitle:11.5px;                       /* Liste üst başlığı / küçük başlık */
+  --type-description:14px;                      /* Açıklama ve tanıtım metni */
+  --type-list:13.5px;                           /* Madde listeleri */
+  --type-meta:12px;                             /* Yardımcı bilgi */
+  --type-section-leading:1.04;
+  --type-card-leading:1.1;
+  --type-description-leading:1.7;
+  --type-list-leading:1.5;
+
+  /* — Satır yüksekliği — */
+  --lh-solid:1;      /* büyük başlık */
+  --lh-tight:1.16;   /* başlık */
+  --lh-snug:1.4;     /* spot metin */
+  --lh-normal:1.75;  /* gövde */
+  --lh-relaxed:1.9;  /* uzun gövde */
+
+  /* — Harf aralığı — */
+  --ls-display:-.035em;
+  --ls-tight:-.02em;
+  --ls-label:.14em;
+  --ls-eyebrow:.2em;
+}

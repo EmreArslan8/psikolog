@@ -1,0 +1,108 @@
+---
+const services = [
+  {
+    number: '01', title: 'Bireysel Danışmanlık', image: '/assets/bireysel-terapi-transparent.webp', alt: 'Bireysel psikoterapi görüşmesini anlatan illüstrasyon',
+    description: 'Duygusal zorlukları, düşünce ve davranış örüntülerini güvenli ve iş birliğine dayalı bir süreçte ele alan bireysel görüşmeler.',
+    groups: [
+      { title: 'Çalışılan konular', items: ['Depresyon', 'Yaygın anksiyete ve kaygı sorunları', 'Panik bozukluk', 'Özgül fobiler', 'Sosyal kaygı', 'Obsesif kompulsif belirtiler', 'Travma ve travma sonrası yaşantılar', 'Öfke ve stres yönetimi', 'Duygusal zorluklar', 'Problem çözme ve sağlıklı iletişim becerileri'] },
+      { title: 'Terapi yaklaşımları', items: ['Bilişsel Davranışçı Terapi', 'Kısa Süreli Çözüm Odaklı Terapi'] }
+    ]
+  },
+  {
+    number: '02', title: 'Çocuk ve Ergen Çalışmaları', image: '/assets/oyun-terapisi-transparent.webp', alt: 'Çocuk ve ergen çalışmalarını anlatan illüstrasyon',
+    description: 'Çocuğun yaşı, gelişim dönemi ve ihtiyacına göre şekillenen psikolojik destek ve gelişim çalışmaları.',
+    groups: [
+      { title: 'Terapi ve çalışma alanları', items: ['Oyun terapisi', 'Kum terapisi', 'Masal terapisi', 'Filial terapi', 'Resim analizi', 'Ergenlik dönemine ilişkin duygusal ve davranışsal sorunlar'] },
+      { title: 'Destekleyici eğitimler', items: ['Montessori Eğitimi', 'P4C Çocuklar İçin Felsefe'] }
+    ]
+  },
+  {
+    number: '03', title: 'Aile ve Çift Danışmanlığı', image: '/assets/aile-ve-cift-danismanligi-transparent.webp', alt: 'Aile ve çift danışmanlığını anlatan illüstrasyon',
+    description: 'İlişkilerde iletişimi güçlendirmeye ve yaşanan sorunları daha sağlıklı biçimde ele almaya yönelik danışmanlık.',
+    groups: [
+      { title: 'Çalışılan konular', items: ['İletişim ve çatışma problemleri', 'Güven sorunları', 'Kıskançlık ve geçmiş kırgınlıklar', 'Duygusal uzaklaşma', 'Evlilik öncesi danışmanlık', 'Ebeveyn-çocuk ilişkileri', 'Aile içi roller ve sınırlar', 'Boşanma sürecine uyum', 'Bağlanma ve ilişki sorunları'] }
+    ]
+  },
+  {
+    number: '04', title: 'Dikkat ve Gelişim Değerlendirmeleri', image: '/assets/moxo-dikkat-testi-v2-transparent.webp', alt: 'Dikkat ve gelişim değerlendirmesini anlatan illüstrasyon',
+    description: 'Dikkat performansı ile çocukların gelişimsel, bilişsel ve duygusal ihtiyaçlarını anlamaya yardımcı olan değerlendirme çalışmaları.',
+    groups: [
+      { title: 'Değerlendirme alanları', items: ['Dikkat ve odaklanma', 'Zamanlama ve dürtüsellik', 'Gelişimsel değerlendirme', 'Görsel algı ve bilişsel beceriler', 'Duygusal ihtiyaçların değerlendirilmesi'] }
+    ]
+  }
+];
+---
+
+<section id="yaklasimlar" class="services-section">
+  <div class="shell">
+    <header class="services-heading reveal">
+      <div><p class="eyebrow"><span></span> Hizmetlerim</p><h2>İhtiyacınıza göre<br><em>şekillenen destek.</em></h2></div>
+      <p>Benzer hizmetler aynı başlık altında toplandı; tüm çalışma konuları kartların içinde doğrudan görülebilir.</p>
+    </header>
+    <div class="services-list">
+      {services.map((service) => (
+        <article class="service-row reveal">
+          <span class="service-number">{service.number}</span>
+          <div class="service-body">
+            <div class="service-top">
+              <figure><img src={service.image} alt={service.alt} loading="lazy" width="1672" height="941" /></figure>
+              <div class="service-intro">
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+              </div>
+            </div>
+            <div class="service-groups">
+              {service.groups.map((group) => (
+                <div class="service-group">
+                  <h4>{group.title}</h4>
+                  <ul>{group.items.map((item) => <li>{item}</li>)}</ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-section { padding-block:82px; overflow:hidden; background:var(--surface); }
+  .services-heading { margin-bottom:36px; display:grid; grid-template-columns:1fr minmax(280px,.62fr); gap:50px; align-items:end; }
+  .services-heading h2 { font-size:var(--type-section-title); line-height:var(--type-section-leading); }
+  .services-heading > p { max-width:440px; margin:0 0 5px; color:var(--ink-soft); font-size:var(--type-description); line-height:var(--type-description-leading); }
+  .services-list { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-block:1px solid rgba(95,116,95,.2); }
+  .service-row { min-width:0; padding:24px 22px 27px; display:flex; flex-direction:column; border-right:1px solid rgba(95,116,95,.2); }
+  .service-row:last-child { border-right:0; }
+  .service-number { margin-bottom:14px; color:var(--brand); font-family:var(--serif); font-size:17px; font-style:italic; }
+  .service-body,.service-top,.service-intro { min-width:0; }
+  .service-top { display:block; }
+  .service-row figure { margin:0; overflow:hidden; aspect-ratio:1672/941; border-radius:12px; background:transparent; }
+  .service-row img { width:100%; height:100%; display:block; object-fit:contain; }
+  .service-intro { padding-top:18px; }
+  .service-intro h3 { min-height:2.25em; margin:0; font-family:var(--serif); font-size:var(--type-card-title); font-weight:400; line-height:var(--type-card-leading); letter-spacing:-.02em; }
+  .service-intro p { min-height:8em; margin:12px 0 0; color:var(--ink-soft); font-size:var(--type-description); line-height:var(--type-description-leading); }
+  .service-groups { margin-top:16px; border-top:1px solid var(--line); }
+  .service-group { min-width:0; padding:15px 0 14px; border-bottom:1px solid var(--line); }
+  .service-group h4 { margin:0 0 11px; color:var(--ink); font-size:var(--type-subtitle); font-weight:700; letter-spacing:.075em; text-transform:uppercase; }
+  .service-groups ul { margin:0; padding:0; display:grid; gap:7px; list-style:none; }
+  .service-groups li { position:relative; padding-left:14px; color:var(--ink-soft); font-size:var(--type-list); line-height:var(--type-list-leading); overflow-wrap:anywhere; }
+  .service-groups li::before { content:''; position:absolute; left:0; top:.57em; width:5px; height:5px; border-radius:50%; background:var(--brand-soft); }
+  @media(max-width:1050px){
+    .services-list{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .service-row{border-bottom:1px solid rgba(95,116,95,.2);}
+    .service-row:nth-child(even){border-right:0;}
+    .service-row:nth-last-child(-n+2){border-bottom:0;}
+    .service-intro h3,.service-intro p{min-height:0;}
+  }
+  @media(max-width:680px){
+    .services-section{padding-block:72px;}
+    .services-heading{grid-template-columns:1fr;gap:20px;}
+    .services-list{grid-template-columns:1fr;}
+    .service-row,.service-row:nth-child(even){padding:24px 0;border-right:0;border-bottom:1px solid rgba(95,116,95,.2);}
+    .service-row:last-child{border-bottom:0;}
+    .service-row figure{max-width:440px;}
+    .service-intro h3{min-height:0;}
+    .service-intro p{min-height:0;}
+  }
+</style>

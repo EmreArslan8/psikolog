@@ -98,19 +98,32 @@ if (quoteSlider) {
 }
 
 if (menuButton && navigation) {
+  const menuLabel = menuButton.querySelector('.sr-only');
+
+  const closeMenu = () => {
+    menuButton.setAttribute('aria-expanded', 'false');
+    if (menuLabel) menuLabel.textContent = 'Menüyü aç';
+    navigation.classList.remove('is-open');
+  };
+
   menuButton.addEventListener('click', () => {
     const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
     menuButton.setAttribute('aria-expanded', String(!isOpen));
+    if (menuLabel) menuLabel.textContent = isOpen ? 'Menüyü aç' : 'Menüyü kapat';
     navigation.classList.toggle('is-open', !isOpen);
-    document.body.style.overflow = isOpen ? '' : 'hidden';
   });
 
   navigation.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      menuButton.setAttribute('aria-expanded', 'false');
-      navigation.classList.remove('is-open');
-      document.body.style.overflow = '';
-    });
+    link.addEventListener('click', closeMenu);
+  });
+
+  navigation.querySelector('.mobile-nav-backdrop')?.addEventListener('click', closeMenu);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && navigation.classList.contains('is-open')) {
+      closeMenu();
+      menuButton.focus();
+    }
   });
 }
 
@@ -134,11 +147,9 @@ if ('IntersectionObserver' in window) {
 }
 
 // İletişim formu
-// FORM_ENDPOINT: Web3Forms (https://api.web3forms.com/submit) veya Formspree
-// (https://formspree.io/f/xxxxxxx) uç noktası. Web3Forms kullanılacaksa
-// FORM_ACCESS_KEY de doldurulmalıdır. Boş bırakılırsa form gönderilmez.
-const FORM_ENDPOINT = '';
-const FORM_ACCESS_KEY = '';
+// Form Web3Forms üzerinden gönderilir; erişim anahtarı boşsa gönderim yapılmaz.
+const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+const FORM_ACCESS_KEY = '2e9760cc-ef97-4432-9e14-367a3f4d6ae8';
 
 const contactForm = document.querySelector('[data-contact-form]');
 if (contactForm) {
@@ -163,7 +174,7 @@ if (contactForm) {
     if (contactForm.elements._gotcha && contactForm.elements._gotcha.value) return;
 
     if (!FORM_ENDPOINT) {
-      setStatus('Form altyapısı henüz bağlanmadı. Bu arada iletisim@selinunal.com adresine yazabilirsiniz.', 'error');
+      setStatus('Form altyapısı henüz bağlanmadı. Bu arada psk.selinunal@gmail.com adresine yazabilirsiniz.', 'error');
       return;
     }
 
@@ -185,7 +196,7 @@ if (contactForm) {
       contactForm.reset();
       setStatus('Mesajınız iletildi. En kısa sürede size dönüş yapacağım.');
     } catch (error) {
-      setStatus('Mesaj gönderilemedi. Lütfen iletisim@selinunal.com adresine yazın.', 'error');
+      setStatus('Mesaj gönderilemedi. Lütfen psk.selinunal@gmail.com adresine yazın.', 'error');
     } finally {
       submitButton.removeAttribute('aria-busy');
     }
@@ -230,3 +241,12 @@ if (counters.length && !window.matchMedia('(prefers-reduced-motion: reduce)').ma
   counters.forEach((el) => countObserver.observe(el));
 }
 
+// Header gölgesi yalnızca sayfa kaydırıldığında görünsün
+const siteHeader = document.querySelector('.site-header');
+if (siteHeader) {
+  const syncHeaderScroll = () => {
+    siteHeader.classList.toggle('is-scrolled', window.scrollY > 8);
+  };
+  syncHeaderScroll();
+  window.addEventListener('scroll', syncHeaderScroll, { passive: true });
+}

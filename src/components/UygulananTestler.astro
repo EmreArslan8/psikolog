@@ -1,0 +1,188 @@
+---
+const tests = [
+  { tag: 'Dikkat', title: 'MOXO Dikkat Testi', text: 'Dikkat, zamanlama, dürtüsellik ve hiperaktivite alanlarını değerlendirmeye yardımcı olur.' },
+  { tag: 'Dikkat', title: 'D2 Dikkat Testi', text: 'Seçici dikkat, odaklanma ve zihinsel işlem hızına ilişkin bilgi sağlar.' },
+  { tag: 'Dikkat', title: 'Burdon Dikkat Testi', text: 'Dikkati sürdürme ve belirli uyaranları ayırt etme becerilerini değerlendirir.' },
+  { tag: 'Dikkat', title: 'Frankfurter Dikkat Testi', text: 'Çocukların dikkat ve konsantrasyon becerilerini gelişim düzeyine göre ele alır.' },
+  { tag: 'Gelişim', title: 'Gesell Gelişim Figürleri', text: 'Görsel algı, görsel-motor koordinasyon ve gelişimsel olgunluk hakkında bilgi verir.' },
+  { tag: 'Gelişim', title: 'Ankara Gelişim Envanteri', text: 'Çocuğun gelişimini farklı beceri alanları üzerinden bütüncül olarak değerlendirir.' },
+  { tag: 'Okul olgunluğu', title: 'Metropolitan Okul Olgunluğu Testi', text: 'Çocuğun okul yaşamına hazırlık düzeyini ve temel becerilerini değerlendirir.' },
+  { tag: 'Görsel algı', title: 'Bender Gestalt Görsel Algı Testi', text: 'Görsel algı ile görsel-motor bütünleşme becerilerine ilişkin bilgi sağlar.' },
+  { tag: 'Görsel algı', title: 'Frostig Gelişimsel Görsel Algı Testi', text: 'Görsel algının farklı boyutlarını gelişimsel açıdan değerlendirmeye yardımcı olur.' },
+  { tag: 'Bilişsel', title: 'Cattell Zekâ Testleri', text: 'Bilişsel performans ve problem çözme becerileri hakkında değerlendirme sunar.' },
+  { tag: 'Bilişsel', title: 'Porteus Labirentleri Testi', text: 'Planlama, problem çözme ve dürtü kontrolü becerilerini ele alır.' },
+  { tag: 'Duygusal', title: 'Beier Cümle Tamamlama Testi', text: 'Duygusal ihtiyaçlar, tutumlar ve ilişki örüntülerini anlamaya yardımcı olur.' },
+  { tag: 'Duygusal', title: 'Sınav Kaygısı Ölçeği', text: 'Sınav sürecinde yaşanan kaygının düzeyi ve etkileri hakkında bilgi verir.' }
+];
+---
+
+<section class="tests-section" aria-labelledby="tests-title">
+  <div class="shell">
+    <header class="tests-heading reveal">
+      <div>
+        <p class="eyebrow"><span></span> Değerlendirme Araçları</p>
+        <h2 id="tests-title">Uygulanan<br><em>testler.</em></h2>
+      </div>
+      <div class="tests-heading-copy">
+        <p>İhtiyaca ve yaş grubuna göre uygun değerlendirme aracı belirlenir; sonuçlar tek başına değil, görüşme süreciyle birlikte ele alınır.</p>
+        <div class="slider-controls" aria-label="Test kartlarını kaydır">
+          <button type="button" data-slider-prev aria-label="Önceki testler">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <span class="slider-count" aria-live="polite"><b data-slider-current>01</b> / {String(tests.length).padStart(2, '0')}</span>
+          <button type="button" data-slider-next aria-label="Sonraki testler">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="tests-slider reveal" data-test-slider>
+      <div class="tests-track" data-slider-track tabindex="0" aria-label="Uygulanan testler">
+        {tests.map((test, index) => (
+          <article class="test-card" data-slider-card>
+            <div class="test-card-top">
+              <span class="test-index">{String(index + 1).padStart(2, '0')}</span>
+              <span class="test-tag">{test.tag}</span>
+            </div>
+            <h3>{test.title}</h3>
+            <p>{test.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const slider = document.querySelector('[data-test-slider]');
+  const track = slider?.querySelector('[data-slider-track]');
+  const cards = slider?.querySelectorAll('[data-slider-card]');
+  const section = slider?.closest('.tests-section');
+  const previous = section?.querySelector('[data-slider-prev]');
+  const next = section?.querySelector('[data-slider-next]');
+  const current = section?.querySelector('[data-slider-current]');
+
+  if (track && cards?.length && previous instanceof HTMLButtonElement && next instanceof HTMLButtonElement) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let autoplayTimer: number | undefined;
+    let updateFrame: number | undefined;
+    let isVisible = false;
+    let step = 0;
+    let maxScroll = 0;
+
+    const measure = () => {
+      const card = cards[0];
+      if (!(card instanceof HTMLElement)) return;
+      const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0;
+      step = card.offsetWidth + gap;
+      maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+    };
+
+    const update = () => {
+      const scrollLeft = track.scrollLeft;
+      const index = step > 0
+        ? Math.min(cards.length - 1, Math.max(0, Math.round(scrollLeft / step)))
+        : 0;
+      const atStart = scrollLeft <= 2;
+      const atEnd = scrollLeft >= maxScroll - 2;
+
+      if (current) current.textContent = String(index + 1).padStart(2, '0');
+      previous.disabled = atStart;
+      next.disabled = atEnd;
+    };
+
+    const scheduleUpdate = () => {
+      if (updateFrame) return;
+      updateFrame = window.requestAnimationFrame(() => {
+        updateFrame = undefined;
+        update();
+      });
+    };
+
+    const refresh = () => {
+      window.requestAnimationFrame(() => {
+        measure();
+        update();
+      });
+    };
+
+    const move = (direction: number) => {
+      if (step <= 0) return;
+      track.scrollBy({ left: direction * step, behavior: 'smooth' });
+    };
+
+    const stopAutoplay = () => window.clearInterval(autoplayTimer);
+    const startAutoplay = () => {
+      stopAutoplay();
+      if (reduceMotion || !isVisible) return;
+      autoplayTimer = window.setInterval(() => {
+        const atEnd = track.scrollLeft >= maxScroll - 2;
+        if (atEnd) track.scrollTo({ left: 0, behavior: 'smooth' });
+        else move(1);
+      }, 4500);
+    };
+
+    const manualMove = (direction: number) => {
+      move(direction);
+      startAutoplay();
+    };
+
+    previous.addEventListener('click', () => manualMove(-1));
+    next.addEventListener('click', () => manualMove(1));
+    track.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', refresh);
+    slider.addEventListener('mouseenter', stopAutoplay);
+    slider.addEventListener('mouseleave', startAutoplay);
+    section?.addEventListener('focusin', stopAutoplay);
+    section?.addEventListener('focusout', startAutoplay);
+
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+      if (isVisible) startAutoplay();
+      else stopAutoplay();
+    }, { threshold: .25 });
+    observer.observe(slider);
+    refresh();
+  }
+</script>
+
+<style>
+  .tests-section { padding:90px 0 104px; overflow:hidden; background:var(--paper); }
+  .tests-heading { margin-bottom:36px; display:grid; grid-template-columns:1fr minmax(300px,.72fr); gap:52px; align-items:end; }
+  .tests-heading h2 { font-size:var(--type-section-title); line-height:var(--type-section-leading); }
+  .tests-heading-copy { display:grid; gap:24px; }
+  .tests-heading-copy > p { max-width:520px; margin:0; color:var(--ink-soft); font-size:var(--type-description); line-height:var(--type-description-leading); }
+  .slider-controls { justify-self:end; padding:4px; display:flex; align-items:center; gap:4px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.62); box-shadow:0 8px 28px rgba(48,53,46,.05); }
+  .slider-controls button { width:40px; height:40px; display:grid; place-items:center; border:0; border-radius:50%; background:transparent; color:var(--brand); cursor:pointer; transition:background .2s,color .2s,opacity .2s,transform .2s; }
+  .slider-controls button:hover:not(:disabled) { background:var(--brand); color:var(--surface); }
+  .slider-controls button:active:not(:disabled) { transform:scale(.94); }
+  .slider-controls button:focus-visible { outline:2px solid var(--brand); outline-offset:3px; }
+  .slider-controls button:disabled { opacity:.28; cursor:default; }
+  .slider-controls svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+  .slider-count { min-width:58px; color:var(--ink-mute); font-size:11px; letter-spacing:.08em; text-align:center; }
+  .slider-count b { color:var(--ink); font-weight:600; }
+  .tests-track { display:grid; grid-auto-flow:column; grid-auto-columns:calc((100% - 40px) / 3); column-gap:20px; overflow-x:auto; overscroll-behavior-inline:contain; scroll-snap-type:inline mandatory; scrollbar-width:none; }
+  .tests-track::-webkit-scrollbar { display:none; }
+  .tests-track:focus-visible { outline:2px solid var(--brand); outline-offset:6px; }
+  .test-card { min-width:0; min-height:255px; padding:26px; display:flex; flex-direction:column; scroll-snap-align:start; border:1px solid rgba(95,116,95,.2); border-radius:18px; background:var(--surface); transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease; }
+  .test-card:hover { transform:translateY(-4px); border-color:rgba(95,116,95,.4); box-shadow:0 18px 44px rgba(48,53,46,.08); }
+  .test-card-top { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .test-index { color:var(--brand); font-family:var(--serif); font-size:17px; font-style:italic; }
+  .test-tag { padding:7px 10px; border-radius:999px; background:var(--brand-tint); color:var(--brand-deep); font-size:9px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+  .test-card h3 { max-width:290px; margin:44px 0 14px; font-family:var(--serif); font-size:var(--type-card-title); font-weight:400; line-height:var(--type-card-leading); letter-spacing:-.02em; }
+  .test-card p { max-width:330px; margin:auto 0 0; color:var(--ink-soft); font-size:var(--type-description); line-height:var(--type-description-leading); }
+  @media(max-width:900px){
+    .tests-heading{grid-template-columns:1fr;gap:24px;}
+    .slider-controls{justify-self:end;}
+    .tests-track{grid-auto-columns:calc((100% - 18px) / 2);column-gap:18px;}
+  }
+  @media(max-width:620px){
+    .tests-section{padding:72px 0 84px;}
+    .tests-heading{margin-bottom:28px;}
+    .tests-heading-copy{gap:20px;}
+    .tests-track{grid-auto-columns:86%;column-gap:14px;}
+    .test-card{min-height:238px;padding:22px;}
+    .test-card h3{margin-top:34px;}
+  }
+</style>

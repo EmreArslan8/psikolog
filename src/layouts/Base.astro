@@ -1,0 +1,60 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/theme.css';
+import '../styles/styles.css';
+
+const {
+  title,
+  description,
+  canonical,
+  ogTitle = title,
+  ogDescription = description,
+  ogImage = 'https://selinunal.com/assets/selin-unal-about.webp',
+  robots = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+  active = null,
+} = Astro.props;
+
+const url = new URL(canonical, Astro.site).href;
+---
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/favicon.svg">
+  <meta name="theme-color" content="#5f745f">
+  <link rel="canonical" href={url}>
+  <meta name="robots" content={robots}>
+  <meta name="author" content="Psikolog Selin Ünal">
+  <meta name="geo.region" content="TR-78">
+  <meta name="geo.placename" content="Karabük">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:site_name" content="Psikolog Selin Ünal">
+  <meta property="og:title" content={ogTitle}>
+  <meta property="og:description" content={ogDescription}>
+  <meta property="og:url" content={url}>
+  <meta property="og:image" content={ogImage}>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={ogTitle}>
+  <meta name="twitter:description" content={ogDescription}>
+  <meta name="twitter:image" content={ogImage}>
+  <link rel="preload" href="/fonts/dm-sans-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/newsreader-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/newsreader-italic-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <script src="/script.js" defer is:inline></script>
+  <slot name="head" />
+</head>
+<body>
+  <a class="skip-link" href="#icerik">İçeriğe geç</a>
+  <Header active={active} />
+  <main id="icerik">
+    <slot />
+  </main>
+  <Footer />
+</body>
+</html>

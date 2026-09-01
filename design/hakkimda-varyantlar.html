@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hakkımda — Tasarım Varyantları</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="../public/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../src/styles/theme.css">
+  <style>
+    /* ==========================================================
+       Yalnızca bu karşılaştırma sayfası için. styles.css'e dokunmaz.
+       Seçilen varyant styles.css'e taşınacak.
+       ========================================================== */
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:var(--text-body);line-height:var(--lh-normal)}
+    img{display:block;max-width:100%}
+    h2,h3{margin-top:0;font-family:var(--serif);font-weight:400;letter-spacing:var(--ls-tight)}
+    p{margin-top:0}
+    .wrap{width:min(var(--stage-w,1280px),calc(100% - 48px));margin-inline:auto}
+
+    /* — sayfa başlığı ve varyant çerçevesi — */
+    .page-head{padding:56px 0 8px}
+    .page-head h1{margin:0 0 10px;font-family:var(--serif);font-size:var(--text-h1);font-weight:400;letter-spacing:var(--ls-display)}
+    .page-head p{max-width:62ch;color:var(--ink-soft)}
+    .variant{padding-block:26px 70px;border-top:1px solid var(--line)}
+    .variant:first-of-type{border-top:0}
+    .vhead{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;padding:14px 0 22px;background:linear-gradient(var(--paper) 72%,transparent);backdrop-filter:blur(2px)}
+    .vhead b{font-family:var(--serif);font-size:22px;font-weight:400}
+    .vtag{padding:4px 10px;border-radius:999px;background:var(--brand-tint);color:var(--brand-deep);font-size:var(--text-micro);font-weight:600;letter-spacing:.04em}
+    .vnote{flex:1 1 380px;min-width:260px;color:var(--ink-mute);font-size:var(--text-meta)}
+    .stage{padding:44px 38px;border:1px solid var(--line);border-radius:20px;background:var(--surface)}
+
+    /* — ortak parçalar — */
+    .eyebrow{margin:0 0 22px;display:flex;align-items:center;gap:12px;color:var(--ink-mute);font-size:var(--text-eyebrow);font-weight:600;letter-spacing:var(--ls-eyebrow);text-transform:uppercase}
+    .eyebrow i{width:28px;height:1px;background:var(--mist)}
+    .h2{font-size:var(--text-h2);line-height:var(--lh-tight)}
+    .h2 em{color:var(--brand);font-style:italic}
+    .lead{color:var(--ink);font-family:var(--serif);font-size:var(--text-lead);line-height:var(--lh-snug)}
+    .body{color:var(--ink-soft);font-size:var(--text-body-sm)}
+    .link{display:inline-flex;align-items:center;gap:14px;padding:5px 0;border-bottom:1px solid var(--line);color:var(--ink);font-size:var(--text-micro);font-weight:500;text-decoration:none}
+    .link:hover{border-color:var(--brand)}
+    .link::after{content:"→";transition:transform .2s}
+    .link:hover::after{transform:translateX(4px)}
+
+    /* portre yer tutucu (gerçek foto gelince <img> ile değişir) */
+    .ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+        background:linear-gradient(150deg,var(--brand-tint),var(--brand-soft));color:#fff}
+    .ph b{font-family:var(--serif);font-size:40px;font-weight:400}
+    .ph small{font-size:9px;letter-spacing:var(--ls-label);text-transform:uppercase;opacity:.85}
+
+    /* ===== V1 — Dergi düzeni: solda büyük portre, sağda anlatı + çizgili eğitim listesi ===== */
+    .v1{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:start}
+    .v1 .ph{aspect-ratio:.76;border-radius:200px 200px 10px 10px}
+    .v1 .edu{margin-top:34px;border-top:1px solid var(--line)}
+    .v1 .edu div{display:grid;grid-template-columns:135px 1fr;gap:16px;padding:15px 0;border-bottom:1px solid var(--line)}
+    .v1 .edu span{color:var(--brand);font-size:var(--text-micro);font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+    .v1 .edu strong{display:block;font-family:var(--serif);font-size:17px;font-weight:400}
+    .v1 .edu em{color:var(--ink-mute);font-size:var(--text-meta);font-style:normal}
+
+    /* ===== V2 — Ortalanmış: yuvarlak portre üstte, altında 3 sütun rozet ===== */
+    .v2{text-align:center}
+    .v2 .ph{width:180px;aspect-ratio:1;margin:0 auto 26px;border-radius:50%}
+    .v2 .eyebrow{justify-content:center}
+    .v2 .lead{max-width:30ch;margin:14px auto 16px}
+    .v2 .body{max-width:56ch;margin-inline:auto}
+    .v2 .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:44px;border-top:1px solid var(--line)}
+    .v2 .cols div{padding:26px 22px;border-left:1px solid var(--line)}
+    .v2 .cols div:first-child{border-left:0}
+    .v2 .cols span{display:block;margin-bottom:8px;color:var(--brand);font-size:var(--text-eyebrow);font-weight:600;letter-spacing:var(--ls-eyebrow);text-transform:uppercase}
+    .v2 .cols strong{display:block;font-family:var(--serif);font-size:19px;font-weight:400}
+    .v2 .cols p{margin:4px 0 0;color:var(--ink-mute);font-size:var(--text-meta)}
+
+    /* ===== V3 — Bindirmeli kart: portre + üzerine binen künye kartı ===== */
+    .v3{display:grid;grid-template-columns:1.05fr .95fr;gap:80px;align-items:center}
+    .v3 .figure{position:relative;padding-bottom:44px}
+    .v3 .ph{aspect-ratio:.82;border-radius:20px}
+    .v3 .card{position:absolute;right:-26px;bottom:0;width:min(268px,88%);padding:20px 22px;border-radius:16px;
+              background:var(--surface);box-shadow:0 20px 50px rgba(var(--ink-rgb),.12)}
+    .v3 .card h3{margin:0 0 12px;font-size:15px;letter-spacing:0}
+    .v3 .card div{display:flex;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
+    .v3 .card div:first-of-type{border-top:0}
+    .v3 .card i{width:6px;height:6px;flex:none;margin-top:7px;border-radius:50%;background:var(--brand-soft)}
+    .v3 .card strong{display:block;font-size:var(--text-body-sm);font-weight:600}
+    .v3 .card em{color:var(--ink-mute);font-size:var(--text-micro);font-style:normal}
+
+    /* ===== V4 — Zaman çizelgesi: sabit portre + dikey akış ===== */
+    .v4{display:grid;grid-template-columns:.72fr 1.28fr;gap:74px;align-items:start}
+    .v4 .ph{position:sticky;top:24px;aspect-ratio:.8;border-radius:16px}
+    .v4 .tl{position:relative;margin-top:30px;padding-left:30px}
+    .v4 .tl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--line)}
+    .v4 .tl div{position:relative;padding-bottom:26px}
+    .v4 .tl div::before{content:"";position:absolute;left:-29px;top:6px;width:11px;height:11px;border:2px solid var(--brand-soft);border-radius:50%;background:var(--surface)}
+    .v4 .tl span{color:var(--brand);font-size:var(--text-micro);font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+    .v4 .tl strong{display:block;margin:3px 0 3px;font-family:var(--serif);font-size:20px;font-weight:400}
+    .v4 .tl p{margin:0;color:var(--ink-mute);font-size:var(--text-meta)}
+
+    /* ===== V5 — Alıntı önde: büyük söz + altında portre ve künye şeridi ===== */
+    .v5 .quote{max-width:20ch;margin:0 0 30px;font-family:var(--serif);font-size:var(--text-h2);font-style:italic;line-height:var(--lh-tight);letter-spacing:var(--ls-tight)}
+    .v5 .quote em{color:var(--brand);font-style:italic}
+    .v5 .row{display:grid;grid-template-columns:170px 1fr;gap:40px;align-items:center;padding-top:34px;border-top:1px solid var(--line)}
+    .v5 .ph{aspect-ratio:1;border-radius:50%}
+    .v5 .facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 34px}
+    .v5 .facts div span{display:block;margin-bottom:3px;color:var(--brand);font-size:var(--text-eyebrow);font-weight:600;letter-spacing:var(--ls-eyebrow);text-transform:uppercase}
+    .v5 .facts div strong{display:block;font-family:var(--serif);font-size:17px;font-weight:400}
+    .v5 .facts div em{color:var(--ink-mute);font-size:var(--text-meta);font-style:normal}
+    .v5 .link{margin-top:26px}
+
+    @media(max-width:850px){
+      .stage{padding:30px 20px;border-radius:16px}
+      .v1,.v3,.v4,.v5 .row{grid-template-columns:1fr;gap:34px}
+      .v1 .ph,.v3 .ph,.v4 .ph{width:min(230px,64%);margin-inline:auto;aspect-ratio:1;border-radius:50%}
+      .v4 .ph{position:static}
+      .v3 .figure{padding-bottom:0}
+      .v3 .card{position:static;width:100%;margin-top:20px;box-shadow:none;border:1px solid var(--line)}
+      .v2 .cols{grid-template-columns:1fr}
+      .v2 .cols div{border-left:0;border-bottom:1px solid var(--line)}
+      .v5 .ph{width:150px}
+      .v5 .facts{grid-template-columns:1fr}
+      .v1 .edu div{grid-template-columns:1fr;gap:2px}
+    }
+
+    /* ===================== BÖLÜM 2 — 10-15 satırlık künye ===================== */
+    .part2-head{padding:70px 0 4px;border-top:2px solid var(--line);margin-top:40px}
+    .part2-head h2{margin:0 0 10px;font-size:var(--text-h1);letter-spacing:var(--ls-display)}
+    .part2-head p{max-width:66ch;color:var(--ink-soft)}
+
+    /* A — Kategorili 2 sütun grid */
+    .ga .grp{margin-bottom:34px}
+    .ga .grp>span{display:block;margin-bottom:12px;padding-bottom:9px;border-bottom:1px solid var(--line);
+                  color:var(--brand);font-size:var(--text-eyebrow);font-weight:600;letter-spacing:var(--ls-eyebrow);text-transform:uppercase}
+    .ga .items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 40px}
+    .ga .items div{display:grid;grid-template-columns:52px 1fr;gap:14px;padding:9px 0}
+    .ga .items b{color:var(--ink-mute);font-size:var(--text-micro);font-weight:600;letter-spacing:.06em}
+    .ga .items strong{display:block;font-family:var(--serif);font-size:16px;font-weight:400;line-height:1.3}
+    .ga .items em{color:var(--ink-mute);font-size:var(--text-meta);font-style:normal}
+
+    /* B — Katlanır kategoriler */
+    .gb details{border-bottom:1px solid var(--line)}
+    .gb summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 0;cursor:pointer;list-style:none}
+    .gb summary::-webkit-details-marker{display:none}
+    .gb summary strong{font-family:var(--serif);font-size:20px;font-weight:400}
+    .gb summary i{color:var(--ink-mute);font-size:var(--text-meta);font-style:normal}
+    .gb summary::after{content:"+";width:26px;height:26px;flex:none;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;color:var(--brand);font-size:15px}
+    .gb details[open] summary::after{content:"–"}
+    .gb .in{padding:2px 0 20px}
+    .gb .in div{display:grid;grid-template-columns:56px 1fr;gap:14px;padding:7px 0}
+    .gb .in b{color:var(--ink-mute);font-size:var(--text-micro);font-weight:600}
+    .gb .in strong{display:block;font-size:var(--text-body-sm);font-weight:600}
+    .gb .in em{color:var(--ink-mute);font-size:var(--text-meta);font-style:normal}
+
+    /* C — Ana sayfa özeti: sayı + öne çıkanlar + link */
+    .gc{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}
+    .gc .ph{aspect-ratio:.85;border-radius:18px}
+    .gc .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:24px 0 26px;border-block:1px solid var(--line)}
+    .gc .stats div{padding:18px 20px;border-left:1px solid var(--line)}
+    .gc .stats div:first-child{border-left:0;padding-left:0}
+    .gc .stats b{display:block;font-family:var(--serif);font-size:30px;font-weight:400;line-height:1}
+    .gc .stats span{color:var(--ink-mute);font-size:var(--text-micro);letter-spacing:.06em}
+    .gc .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+    .gc .chips span{padding:7px 13px;border:1px solid var(--line);border-radius:999px;background:var(--brand-wash);font-size:var(--text-micro)}
+
+    @media(max-width:850px){
+      .ga .items{grid-template-columns:1fr}
+      .gc{grid-template-columns:1fr;gap:34px}
+      .gc .ph{width:min(230px,64%);margin-inline:auto;aspect-ratio:1;border-radius:50%}
+      .gc .stats div{padding:14px 12px}
+      .gc .stats b{font-size:24px}
+    }
+
+    /* ===== D — Ortada daire, solda anlatı, sağda sertifikalar ===== */
+    .gd{display:grid;grid-template-columns:1fr auto 1fr;gap:48px;align-items:center}
+    .gd .ph{width:262px;aspect-ratio:1;border-radius:50%}
+    .gd .ring{position:relative;display:grid;place-items:center}
+    .gd .ring::before{content:"";position:absolute;width:300px;height:300px;border:1px solid var(--line);border-radius:50%}
+    .gd .cap{position:absolute;bottom:-6px;padding:7px 16px;border-radius:999px;background:var(--surface);
+             box-shadow:0 8px 24px rgba(var(--ink-rgb),.08);font-family:var(--serif);font-size:14px;white-space:nowrap}
+    .gd .side{min-width:0}
+    .gd .side>.eyebrow{margin-bottom:16px}
+    .gd .certs{border-top:1px solid var(--line)}
+    .gd .certs div{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:8px 0;border-bottom:1px solid var(--line)}
+    .gd .certs b{color:var(--ink-mute);font-size:var(--text-micro);font-weight:600}
+    .gd .certs strong{display:block;font-size:var(--text-body-sm);font-weight:500;line-height:1.35}
+    .gd .certs em{color:var(--ink-mute);font-size:11px;font-style:normal}
+
+    /* D2 — dengelenmiş: sağda kategori özeti, tam liste altta */
+    .gd2 .certs div{grid-template-columns:1fr auto;padding:11px 0}
+    .gd2 .certs strong{font-family:var(--serif);font-size:16px;font-weight:400}
+    .gd2 .certs span{color:var(--brand);font-size:var(--text-micro);font-weight:600}
+    .gd2 .full{margin-top:38px;padding-top:26px;border-top:1px solid var(--line)}
+    .gd2 .full>span{display:block;margin-bottom:14px;color:var(--ink-mute);font-size:var(--text-eyebrow);font-weight:600;letter-spacing:var(--ls-eyebrow);text-transform:uppercase}
+    .gd2 .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .gd2 .chips span{padding:7px 13px;border:1px solid var(--line);border-radius:999px;background:var(--brand-wash);font-size:var(--text-micro)}
+
+    @media(max-width:850px){
+      .gd{grid-template-columns:1fr;gap:30px;text-align:center}
+      .gd .ph{width:min(210px,58%);margin-inline:auto}
+      .gd .ring{order:-1}
+      .gd .ring::before{width:min(240px,66%);aspect-ratio:1;height:auto}
+      .gd .eyebrow{justify-content:center}
+      .gd .certs div{grid-template-columns:40px 1fr;text-align:left}
+      .gd2 .certs div{grid-template-columns:1fr auto}
+      .gd2 .chips{justify-content:center}
+    }
+
+    /* ===== D3 — Ortada daire, iki yan sütun EŞİT boyda, künye metin olarak ===== */
+    .gd3{--ph:250px;--gap:44px;display:grid;grid-template-columns:1fr auto 1fr;gap:var(--gap);align-items:center}
+    .gd3 .ph{width:var(--ph);aspect-ratio:1;border-radius:50%}
+    .gd3 .ring{position:relative;display:grid;place-items:center}
+    .gd3 .ring::before{content:"";position:absolute;width:calc(var(--ph) + 38px);aspect-ratio:1;border:1px solid var(--line);border-radius:50%}
+    .gd3 .ph b{font-size:calc(var(--ph) * .16)}
+
+    /* — boyut denetimi: sadece karşılaştırma için — */
+    .sizer{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:-8px 0 26px;font-size:var(--text-meta);color:var(--ink-mute)}
+    .sizer input{position:absolute;opacity:0;pointer-events:none}
+    .sizer label{padding:6px 13px;border:1px solid var(--line);border-radius:999px;cursor:pointer;transition:.15s}
+    .sizer label:hover{border-color:var(--brand-soft)}
+    .sizer input:checked + label{border-color:var(--brand);background:var(--brand-tint);color:var(--brand-deep);font-weight:600}
+    .stage:has(#s280:checked) .gd3{--ph:280px;--gap:40px}
+    .stage:has(#s320:checked) .gd3{--ph:320px;--gap:36px}
+    .stage:has(#s360:checked) .gd3{--ph:360px;--gap:32px}
+    .stage:has(#sfluid:checked) .gd3{--ph:clamp(250px,25vw,380px);--gap:clamp(28px,3vw,44px)}
+    .gd3 .cap{position:absolute;bottom:-4px;padding:7px 16px;border-radius:999px;background:var(--surface);
+              box-shadow:0 8px 24px rgba(var(--ink-rgb),.08);font-family:var(--serif);font-size:14px;white-space:nowrap}
+    .gd3 .side{min-width:0}
+    .gd3 .side>.eyebrow{margin-bottom:14px}
+    .gd3 .body{margin-bottom:13px;line-height:1.72}
+    .gd3 .cv{border-top:1px solid var(--line)}
+    .gd3 .cv .cat{padding:13px 0 5px;color:var(--brand);font-size:var(--text-eyebrow);font-weight:600;letter-spacing:var(--ls-eyebrow);text-transform:uppercase}
+    .gd3 .cv .cat:first-child{padding-top:9px}
+    .gd3 .cv .row{display:flex;align-items:baseline;gap:10px;padding:4px 0}
+    .gd3 .cv .row b{flex:none;width:42px;color:var(--ink-mute);font-size:var(--text-micro);font-weight:600}
+    .gd3 .cv .row span{font-size:var(--text-body-sm);line-height:1.45}
+    @media(max-width:850px){
+      .gd3{grid-template-columns:1fr;gap:28px;text-align:center}
+      .gd3 .ring{order:-1}
+      .gd3 .ph{width:min(200px,56%);margin-inline:auto}
+      .gd3 .ring::before{width:min(230px,64%);aspect-ratio:1;height:auto}
+      .gd3 .eyebrow{justify-content:center}
+      .gd3 .cv{text-align:left}
+    }
+
+    /* ==========================================================
+       E / F / G — webde yaygın "hakkımda" kalıpları
+       ========================================================== */
+
+    /* ===== E — Yapışkan portre + sekmeli künye ===== */
+    .ge{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+    .ge .col-l{position:sticky;top:24px}
+    .ge .ph{aspect-ratio:.84;border-radius:200px 200px 18px 18px}
+    .ge .meta{display:flex;flex-wrap:wrap;gap:18px 26px;margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+    .ge .meta div{display:flex;flex-direction:column;gap:3px}
+    .ge .meta b{font-family:var(--serif);font-size:26px;font-weight:400;color:var(--brand-deep)}
+    .ge .meta span{color:var(--ink-mute);font-size:var(--text-micro);letter-spacing:.02em}
+    .ge .body{margin:0 0 13px;line-height:1.72}
+    .ge .tabs{margin-top:30px;border-top:1px solid var(--line)}
+    .ge .tabs input{position:absolute;opacity:0;pointer-events:none}
+    .ge .tabbar{display:flex;flex-wrap:wrap;gap:6px;padding:16px 0}
+    .ge .tabbar label{padding:7px 14px;border:1px solid var(--line);border-radius:999px;color:var(--ink-soft);
+                      font-size:var(--text-micro);font-weight:500;cursor:pointer;transition:.15s}
+    .ge .tabbar label:hover{border-color:var(--brand-soft)}
+    .ge .panel{display:none}
+    .ge .row{display:flex;align-items:baseline;gap:14px;padding:9px 0;border-top:1px solid var(--line)}
+    .ge .row:first-child{border-top:0}
+    .ge .row b{flex:none;width:52px;color:var(--brand);font-size:var(--text-micro);font-weight:600}
+    .ge .row span{font-size:var(--text-body-sm);line-height:1.5}
+    #ge1:checked~.tabbar [for=ge1],#ge2:checked~.tabbar [for=ge2],
+    #ge3:checked~.tabbar [for=ge3],#ge4:checked~.tabbar [for=ge4]{border-color:var(--brand);background:var(--brand-tint);color:var(--brand-deep);font-weight:600}
+    #ge1:checked~.p1,#ge2:checked~.p2,#ge3:checked~.p3,#ge4:checked~.p4{display:block}
+
+    /* ===== F — Taşan portre + bindirmeli anlatı kartı + güven şeridi ===== */
+    .gf{position:relative;display:grid;grid-template-columns:1.05fr .95fr;align-items:center}
+    .gf .ph{aspect-ratio:.92;border-radius:18px}
+    .gf .card{position:relative;z-index:2;margin-left:-72px;padding:44px 46px;border-radius:18px;background:var(--surface);
+              box-shadow:0 30px 70px rgba(var(--ink-rgb),.10)}
+    .gf .card .body{margin:0 0 13px;line-height:1.72}
+    .gf .sign{margin-top:24px;font-family:var(--serif);font-size:30px;font-style:italic;color:var(--brand);transform:rotate(-3deg);transform-origin:left}
+    .gf .sign+small{display:block;margin-top:10px;color:var(--ink-mute);font-size:var(--text-micro);letter-spacing:.03em}
+    .gf .trust{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:40px;
+               border:1px solid var(--line);border-radius:16px;background:var(--line);overflow:hidden}
+    .gf .trust div{padding:22px 20px;background:var(--surface);text-align:center}
+    .gf .trust b{display:block;font-family:var(--serif);font-size:34px;font-weight:400;color:var(--brand-deep);line-height:1}
+    .gf .trust span{display:block;margin-top:7px;color:var(--ink-mute);font-size:var(--text-micro);letter-spacing:.03em}
+
+    /* ===== G — Bento ===== */
+    .gg{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(96px,auto);gap:14px}
+    .gg>*{padding:26px 28px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
+    .gg .b-intro{grid-column:span 2;grid-row:span 2;display:flex;flex-direction:column;justify-content:center}
+    .gg .b-intro .body{margin:12px 0 0;line-height:1.72}
+    .gg .b-photo{grid-column:span 2;grid-row:span 3;padding:0;overflow:hidden;border:0}
+    .gg .b-photo .ph{width:100%;height:100%;min-height:340px;border-radius:18px}
+    .gg .b-num{display:flex;flex-direction:column;justify-content:center;gap:5px;background:var(--brand-wash)}
+    .gg .b-num b{font-family:var(--serif);font-size:38px;font-weight:400;color:var(--brand-deep);line-height:1}
+    .gg .b-num span{color:var(--ink-mute);font-size:var(--text-micro);letter-spacing:.03em}
+    .gg .b-chips{grid-column:span 2}
+    .gg .b-chips .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
+    .gg .b-chips .chips span{padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--brand-wash);font-size:var(--text-micro)}
+    .gg .b-quote{grid-column:span 2;display:flex;align-items:center;background:var(--brand-deep);color:#fff;border-color:transparent}
+    .gg .b-quote p{margin:0;font-family:var(--serif);font-size:20px;font-style:italic;line-height:1.45}
+    .gg .b-cta{grid-column:span 2;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .gg .b-cta h3{margin:0;font-size:20px}
+    .gg .btn{flex:none;padding:12px 22px;border-radius:999px;background:var(--brand);color:#fff;font-size:var(--text-micro);
+             font-weight:600;letter-spacing:.03em;text-decoration:none}
+    .gg .tag{margin:0 0 10px;color:var(--ink-mute);font-size:var(--text-eyebrow);font-weight:600;letter-spacing:var(--ls-eyebrow);text-transform:uppercase}
+
+    @media(max-width:850px){
+      .ge{grid-template-columns:1fr;gap:30px}
+      .ge .col-l{position:static}
+      .ge .ph{width:min(230px,64%);margin-inline:auto;aspect-ratio:1;border-radius:50%}
+      .gf{grid-template-columns:1fr}
+      .gf .ph{aspect-ratio:1;border-radius:18px}
+      .gf .card{margin:-40px 12px 0;padding:30px 26px}
+      .gf .trust{grid-template-columns:repeat(2,1fr);margin-top:26px}
+      .gg{grid-template-columns:repeat(2,1fr)}
+      .gg .b-photo{grid-row:span 2}
+      .gg .b-photo .ph{min-height:260px}
+    }
+
+    /* — global genişlik denetimi (sadece bu karşılaştırma sayfasında) — */
+    body:has(#w1080:checked){--stage-w:1080px}
+    body:has(#w1360:checked){--stage-w:1360px}
+    body:has(#w1560:checked){--stage-w:1560px}
+    body:has(#wfull:checked){--stage-w:100vw}
+    .wbar{position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;align-items:center;gap:8px;
+          padding:12px 24px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.88);
+          -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-size:var(--text-meta);color:var(--ink-mute)}
+    .wbar input{position:absolute;opacity:0;pointer-events:none}
+    .wbar label{padding:6px 13px;border:1px solid var(--line);border-radius:999px;cursor:pointer;transition:.15s}
+    .wbar label:hover{border-color:var(--brand-soft)}
+    .wbar input:checked + label{border-color:var(--brand);background:var(--brand-tint);color:var(--brand-deep);font-weight:600}
+    .wbar .now{margin-left:auto;font-variant-numeric:tabular-nums}
+    .vhead{top:49px}
+  </style>
+</head>
+<body>
+  <header class="wrap page-head">
+    <h1>Hakkımda — 5 tasarım varyantı</h1>
+    <p>Aynı içerik, beş farklı yerleşim. Metinler ve “eklenecek” alanları sitedeki hâliyle bırakıldı; sadece düzen değişiyor. Beğendiğinizi söyleyin, <code>styles.css</code>’e taşıyıp <code>index.html</code>’deki bölümü ona göre kurayım.</p>
+  </header>
+
+  <!-- ============ V1 ============ -->
+  <section class="wrap variant">
+    <div class="vhead"><b>1 — Dergi düzeni</b><span class="vtag">Bilgi yoğun</span>
+      <span class="vnote">Solda dikey portre, sağda anlatı ve çizgiyle ayrılmış eğitim listesi. Eğitim/sertifika sayısı arttıkça en iyi ölçeklenen düzen; kurumsal ve ciddi durur.</span></div>
+    <div class="stage">
+      <div class="v1">
+        <div class="ph"><b>SÜ</b><small>Portre fotoğrafı</small></div>
+        <div>
+          <p class="eyebrow"><i></i> Hakkımda</p>
+          <h2 class="h2">Beni <em>tanıyın.</em></h2>
+          <p class="lead" style="margin:20px 0 16px">Her insanın hikâyesi kendine özgüdür; terapi de o hikâyeye dikkatle yaklaşan güvenli bir karşılaşmadır.</p>
+          <p class="body">Merhaba, ben Selin. Terapiyi kişinin kendi iç dünyasını daha yakından tanıdığı; duygularına, ihtiyaçlarına ve ilişkilerine yeni bir yerden bakabildiği güvenli bir süreç olarak görüyorum.</p>
+          <p class="body">Çalışmalarımda kişiyi tek bir belirti üzerinden değil; yaşam öyküsü, ilişkileri, kaynakları ve içinde bulunduğu koşullarla bir bütün olarak anlamaya özen gösteriyorum.</p>
+          <div class="edu">
+            <div><span>Lisans</span><p style="margin:0"><strong>Psikoloji</strong><em>Üniversite ve bölüm bilgisi eklenecek</em></p></div>
+            <div><span>Yüksek Lisans</span><p style="margin:0"><strong>Uzmanlık programı</strong><em>Üniversite ve program bilgisi eklenecek</em></p></div>
+            <div><span>Sertifika</span><p style="margin:0"><strong>Bilişsel Davranışçı Terapi</strong><em>Eğitim kurumu bilgisi eklenecek</em></p></div>
+            <div><span>Sertifika</span><p style="margin:0"><strong>EMDR</strong><em>Eğitim kurumu bilgisi eklenecek</em></p></div>
+            <div><span>Sertifika</span><p style="margin:0"><strong>Şema Terapi</strong><em>Eğitim kurumu bilgisi eklenecek</em></p></div>
+          </div>
+          <a class="link" href="ben-kimim.html" style="margin-top:26px">Özgeçmişin tamamı </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V2 ============ -->
+  <section class="wrap variant">
+    <div class="vhead"><b>2 — Ortalanmış</b><span class="vtag">Hero ile uyumlu</span>
+      <span class="vnote">Mobildeki yeni hero düzeninin (yuvarlak portre + ortalı başlık) devamı gibi okunur. Sade, hızlı taranır; çok sayıda sertifika varsa dar gelir.</span></div>
+    <div class="stage">
+      <div class="v2">
+        <div class="ph"><b>SÜ</b><small>Portre</small></div>
+        <p class="eyebrow"><i></i> Hakkımda</p>
+        <h2 class="h2">Beni <em>tanıyın.</em></h2>
+        <p class="lead">Her insanın hikâyesi kendine özgüdür; terapi de o hikâyeye dikkatle yaklaşan güvenli bir karşılaşmadır.</p>
+        <p class="body">Terapiyi kişinin kendi iç dünyasını daha yakından tanıdığı; duygularına, ihtiyaçlarına ve ilişkilerine yeni bir yerden bakabildiği güvenli bir süreç olarak görüyorum. Kişiyi tek bir belirti üzerinden değil, bir bütün olarak anlamaya özen gösteriyorum.</p>
+        <div class="cols">
+          <div><span>Eğitim</span><strong>Psikoloji lisansı</strong><p>Üniversite bilgisi eklenecek</p></div>
+          <div><span>Uzmanlık</span><strong>Yüksek lisans</strong><p>Program bilgisi eklenecek</p></div>
+          <div><span>Yaklaşım</span><strong>BDT · EMDR · Şema</strong><p>Eğitim kurumları eklenecek</p></div>
+        </div>
+        <a class="link" href="ben-kimim.html" style="margin-top:30px">Özgeçmişin tamamı </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V3 ============ -->
+  <section class="wrap variant">
+    <div class="vhead"><b>3 — Bindirmeli künye kartı</b><span class="vtag">En “tasarım” görünen</span>
+      <span class="vnote">Portrenin üzerine binen beyaz künye kartı derinlik veriyor. Görsel olarak en çarpıcısı; gerçek portre fotoğrafı geldiğinde en çok kazanan varyant bu.</span></div>
+    <div class="stage">
+      <div class="v3">
+        <div>
+          <p class="eyebrow"><i></i> Hakkımda</p>
+          <h2 class="h2">Beni <em>tanıyın.</em></h2>
+          <p class="lead" style="margin:20px 0 16px">Her insanın hikâyesi kendine özgüdür; terapi de o hikâyeye dikkatle yaklaşan güvenli bir karşılaşmadır.</p>
+          <p class="body">Merhaba, ben Selin. Terapiyi kişinin kendi iç dünyasını daha yakından tanıdığı; duygularına ve ilişkilerine yeni bir yerden bakabildiği güvenli bir süreç olarak görüyorum.</p>
+          <p class="body">Kişiyi tek bir belirti üzerinden değil; yaşam öyküsü, ilişkileri ve kaynaklarıyla bir bütün olarak anlamaya özen gösteriyorum.</p>
+          <a class="link" href="ben-kimim.html" style="margin-top:22px">Özgeçmişin tamamı </a>
+        </div>
+        <div class="figure">
+          <div class="ph"><b>SÜ</b><small>Portre fotoğrafı</small></div>
+          <div class="card">
+            <h3>Eğitim &amp; Sertifikalar</h3>
+            <div><i></i><p style="margin:0"><strong>Lisans</strong><em>Üniversite bilgisi eklenecek</em></p></div>
+            <div><i></i><p style="margin:0"><strong>Yüksek Lisans</strong><em>Program bilgisi eklenecek</em></p></div>
+            <div><i></i><p style="margin:0"><strong>BDT · EMDR · Şema Terapi</strong><em>Eğitim kurumları eklenecek</em></p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V4 ============ -->
+  <section class="wrap variant">
+    <div class="vhead"><b>4 — Zaman çizelgesi</b><span class="vtag">Güven / E-E-A-T</span>
+      <span class="vnote">Portre kaydırırken sabit kalır, sağda eğitim yolculuğu kronolojik akar. Google’ın sağlık sitelerinde aradığı “bu kişi kim, yetkin mi” sorusuna en net cevabı veren düzen.</span></div>
+    <div class="stage">
+      <div class="v4">
+        <div class="ph"><b>SÜ</b><small>Portre fotoğrafı</small></div>
+        <div>
+          <p class="eyebrow"><i></i> Hakkımda</p>
+          <h2 class="h2">Öğrenmeye devam eden<br><em>bir yolculuk.</em></h2>
+          <p class="body" style="margin-top:18px">Terapiyi kişinin kendi iç dünyasını daha yakından tanıdığı güvenli bir süreç olarak görüyorum. Aşağıda bu süreci taşıyan eğitim ve uzmanlık geçmişim yer alıyor.</p>
+          <div class="tl">
+            <div><span>Lisans</span><strong>Psikoloji</strong><p>Üniversite ve bölüm bilgisi eklenecek</p></div>
+            <div><span>Yüksek Lisans</span><strong>Uzmanlık programı</strong><p>Üniversite ve program bilgisi eklenecek</p></div>
+            <div><span>Sertifika</span><strong>Bilişsel Davranışçı Terapi</strong><p>Eğitim kurumu bilgisi eklenecek</p></div>
+            <div><span>Sertifika</span><strong>EMDR</strong><p>Eğitim kurumu bilgisi eklenecek</p></div>
+            <div><span>Sertifika</span><strong>Şema Terapi</strong><p>Eğitim kurumu bilgisi eklenecek</p></div>
+            <div><span>Bugün</span><strong>Karabük’te danışan kabulü</strong><p>Yüz yüze ve Türkiye genelinde online</p></div>
+          </div>
+          <a class="link" href="ben-kimim.html" style="margin-top:8px">Özgeçmişin tamamı </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V5 ============ -->
+  <section class="wrap variant">
+    <div class="vhead"><b>5 — Söz önde</b><span class="vtag">En sade</span>
+      <span class="vnote">Önce büyük bir cümle, altında portre ve künye şeridi. En az yer kaplayan, en “sakin” varyant; sayfayı kısa tutmak isterseniz bu.</span></div>
+    <div class="stage">
+      <div class="v5">
+        <p class="eyebrow"><i></i> Hakkımda</p>
+        <p class="quote">Her insanın hikâyesi <em>kendine özgüdür.</em></p>
+        <p class="body" style="max-width:60ch">Terapi de o hikâyeye dikkatle yaklaşan güvenli bir karşılaşmadır. Kişiyi tek bir belirti üzerinden değil; yaşam öyküsü, ilişkileri ve kaynaklarıyla bir bütün olarak anlamaya özen gösteriyorum.</p>
+        <div class="row">
+          <div class="ph"><b>SÜ</b><small>Portre</small></div>
+          <div class="facts">
+            <div><span>Lisans</span><strong>Psikoloji</strong><em>Üniversite bilgisi eklenecek</em></div>
+            <div><span>Yüksek Lisans</span><strong>Uzmanlık programı</strong><em>Program bilgisi eklenecek</em></div>
+            <div><span>Yaklaşım</span><strong>BDT · EMDR · Şema</strong><em>Eğitim kurumları eklenecek</em></div>
+            <div><span>Çalışma biçimi</span><strong>Yüz yüze &amp; online</strong><em>Karabük merkez · Türkiye geneli</em></div>
+          </div>
+        </div>
+        <a class="link" href="ben-kimim.html">Özgeçmişin tamamı </a>
+      </div>
+    </div>
+  </section>
+
+  <header class="wrap part2-head">
+    <h2>10–15 satırlık künye için</h2>
+    <p>Sertifika sayısı arttığında yukarıdaki varyantların çoğu dağılıyor. Aşağıdaki üçü bu hacim için: <b>A</b> ve <b>B</b> <code>ben-kimim.html</code>’in tam listesi, <b>C</b> ise ana sayfada duracak özet. Örnek satırlar gerçek değil, hacmi görmek için dolduruldu.</p>
+  </header>
+
+  <!-- A -->
+  <section class="wrap variant">
+    <div class="vhead"><b>A — Kategorili grid</b><span class="vtag">ben-kimim.html</span>
+      <span class="vnote">15 satır 5 başlık altında toplanıyor, 2 sütunda akıyor. Hepsi açıkta — tarayıcının Ctrl+F’i ve Google’ın taraması için en iyisi. Yer kaplar ama gizlenen içerik yok.</span></div>
+    <div class="stage">
+      <div class="ga">
+        <div class="grp"><span>Akademik eğitim</span><div class="items">
+          <div><b>2015</b><p style="margin:0"><strong>Psikoloji (Lisans)</strong><em>Üniversite bilgisi eklenecek</em></p></div>
+          <div><b>2018</b><p style="margin:0"><strong>Klinik Psikoloji (Yüksek Lisans)</strong><em>Üniversite bilgisi eklenecek</em></p></div>
+        </div></div>
+        <div class="grp"><span>Terapi eğitimleri</span><div class="items">
+          <div><b>2018</b><p style="margin:0"><strong>Bilişsel Davranışçı Terapi</strong><em>Eğitim kurumu eklenecek</em></p></div>
+          <div><b>2019</b><p style="margin:0"><strong>EMDR 1. Düzey</strong><em>Eğitim kurumu eklenecek</em></p></div>
+          <div><b>2020</b><p style="margin:0"><strong>EMDR 2. Düzey</strong><em>Eğitim kurumu eklenecek</em></p></div>
+          <div><b>2021</b><p style="margin:0"><strong>Şema Terapi</strong><em>Eğitim kurumu eklenecek</em></p></div>
+          <div><b>2021</b><p style="margin:0"><strong>Çift ve Aile Terapisi</strong><em>Eğitim kurumu eklenecek</em></p></div>
+          <div><b>2022</b><p style="margin:0"><strong>Oyun Terapisi</strong><em>Eğitim kurumu eklenecek</em></p></div>
+        </div></div>
+        <div class="grp"><span>Test ve ölçek eğitimleri</span><div class="items">
+          <div><b>2019</b><p style="margin:0"><strong>MMPI Kişilik Envanteri</strong><em>Eğitim kurumu eklenecek</em></p></div>
+          <div><b>2019</b><p style="margin:0"><strong>WISC-R Zeka Testi</strong><em>Eğitim kurumu eklenecek</em></p></div>
+          <div><b>2020</b><p style="margin:0"><strong>Frankfurt Dikkat Testi</strong><em>Eğitim kurumu eklenecek</em></p></div>
+          <div><b>2020</b><p style="margin:0"><strong>Bender Gestalt</strong><em>Eğitim kurumu eklenecek</em></p></div>
+        </div></div>
+        <div class="grp"><span>Süpervizyon</span><div class="items">
+          <div><b>2020–</b><p style="margin:0"><strong>Bireysel süpervizyon</strong><em>Süpervizör bilgisi eklenecek</em></p></div>
+          <div><b>2022–</b><p style="margin:0"><strong>Vaka grubu süpervizyonu</strong><em>Kurum bilgisi eklenecek</em></p></div>
+        </div></div>
+        <div class="grp"><span>Üyelikler</span><div class="items">
+          <div><b>2018–</b><p style="margin:0"><strong>Türk Psikologlar Derneği</strong><em>Üyelik bilgisi eklenecek</em></p></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- B -->
+  <section class="wrap variant">
+    <div class="vhead"><b>B — Katlanır kategoriler</b><span class="vtag">ben-kimim.html · kompakt</span>
+      <span class="vnote">Aynı 15 satır, kapalıyken 5 satırlık yer kaplıyor. Sayfa kısa kalır; ama içerik varsayılan kapalı olduğu için ziyaretçinin çoğu açmaz. İlk grubu açık bıraktım.</span></div>
+    <div class="stage">
+      <div class="gb">
+        <details open><summary><strong>Akademik eğitim</strong><i>2 kayıt</i></summary><div class="in">
+          <div><b>2015</b><p style="margin:0"><strong>Psikoloji (Lisans)</strong><em>Üniversite bilgisi eklenecek</em></p></div>
+          <div><b>2018</b><p style="margin:0"><strong>Klinik Psikoloji (Yüksek Lisans)</strong><em>Üniversite bilgisi eklenecek</em></p></div>
+        </div></details>
+        <details><summary><strong>Terapi eğitimleri</strong><i>6 sertifika</i></summary><div class="in">
+          <div><b>2018</b><p style="margin:0"><strong>Bilişsel Davranışçı Terapi</strong><em>Eğitim kurumu eklenecek</em></p></div>
+          <div><b>2019</b><p style="margin:0"><strong>EMDR 1. Düzey</strong><em>Eğitim kurumu eklenecek</em></p></div>
+          <div><b>2020</b><p style="margin:0"><strong>EMDR 2. Düzey</strong><em>Eğitim kurumu eklenecek</em></p></div>
+          <div><b>2021</b><p style="margin:0"><strong>Şema Terapi</strong><em>Eğitim kurumu eklenecek</em></p></div>
+          <div><b>2021</b><p style="margin:0"><strong>Çift ve Aile Terapisi</strong><em>Eğitim kurumu eklenecek</em></p></div>
+          <div><b>2022</b><p style="margin:0"><strong>Oyun Terapisi</strong><em>Eğitim kurumu eklenecek</em></p></div>
+        </div></details>
+        <details><summary><strong>Test ve ölçek eğitimleri</strong><i>4 kayıt</i></summary><div class="in">
+          <div><b>2019</b><p style="margin:0"><strong>MMPI Kişilik Envanteri</strong><em>Eğitim kurumu eklenecek</em></p></div>
+          <div><b>2019</b><p style="margin:0"><strong>WISC-R Zeka Testi</strong><em>Eğitim kurumu eklenecek</em></p></div>
+          <div><b>2020</b><p style="margin:0"><strong>Frankfurt Dikkat Testi</strong><em>Eğitim kurumu eklenecek</em></p></div>
+          <div><b>2020</b><p style="margin:0"><strong>Bender Gestalt</strong><em>Eğitim kurumu eklenecek</em></p></div>
+        </div></details>
+        <details><summary><strong>Süpervizyon ve üyelikler</strong><i>3 kayıt</i></summary><div class="in">
+          <div><b>2020–</b><p style="margin:0"><strong>Bireysel süpervizyon</strong><em>Süpervizör bilgisi eklenecek</em></p></div>
+          <div><b>2022–</b><p style="margin:0"><strong>Vaka grubu süpervizyonu</strong><em>Kurum bilgisi eklenecek</em></p></div>
+          <div><b>2018–</b><p style="margin:0"><strong>Türk Psikologlar Derneği</strong><em>Üyelik bilgisi eklenecek</em></p></div>
+        </div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- C -->
+  <section class="wrap variant">
+    <div class="vhead"><b>C — Ana sayfa özeti</b><span class="vtag">index.html · A veya B ile birlikte</span>
+      <span class="vnote">Ana sayfada 15 satır listelemek yerine sayıyı ve öne çıkanları gösterir, tam listeye link verir. Bölümü kısa tutar, ziyaretçiyi ikinci sayfaya taşır.</span></div>
+    <div class="stage">
+      <div class="gc">
+        <div class="ph"><b>SÜ</b><small>Portre fotoğrafı</small></div>
+        <div>
+          <p class="eyebrow"><i></i> Hakkımda</p>
+          <h2 class="h2">Beni <em>tanıyın.</em></h2>
+          <p class="body" style="margin-top:18px">Terapiyi kişinin kendi iç dünyasını daha yakından tanıdığı; duygularına, ihtiyaçlarına ve ilişkilerine yeni bir yerden bakabildiği güvenli bir süreç olarak görüyorum.</p>
+          <div class="stats">
+            <div><b>8</b><span>YIL DENEYİM</span></div>
+            <div><b>15</b><span>EĞİTİM &amp; SERTİFİKA</span></div>
+            <div><b>4</b><span>TERAPİ YAKLAŞIMI</span></div>
+          </div>
+          <div class="chips"><span>Bilişsel Davranışçı Terapi</span><span>EMDR</span><span>Şema Terapi</span><span>Oyun Terapisi</span><span>Çift ve Aile Terapisi</span></div>
+          <a class="link" href="ben-kimim.html">Eğitim ve sertifikaların tamamı </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- D -->
+  <section class="wrap variant">
+    <div class="vhead"><b>D — Ortada daire, iki yanda içerik</b><span class="vtag">senin önerin</span>
+      <span class="vnote">Solda anlatı, ortada yuvarlak portre, sağda 15 sertifikanın tamamı. Fikir güçlü ama iki yan sütunun boyu tutmuyor — aşağıdaki notlara bak.</span></div>
+    <div class="stage">
+      <div class="gd">
+        <div class="side"><p class="eyebrow"><i></i> Hakkımda</p>
+          <h2 class="h2" style="font-size:var(--text-h3)">Beni <em>tanıyın.</em></h2>
+          <p class="lead" style="font-size:19px;margin:14px 0 14px">Her insanın hikâyesi kendine özgüdür; terapi de o hikâyeye dikkatle yaklaşan güvenli bir karşılaşmadır.</p>
+          <p class="body">Merhaba, ben Selin. Terapiyi kişinin kendi iç dünyasını daha yakından tanıdığı; duygularına, ihtiyaçlarına ve ilişkilerine yeni bir yerden bakabildiği güvenli bir süreç olarak görüyorum.</p>
+          <p class="body">Çalışmalarımda kişiyi tek bir belirti üzerinden değil; yaşam öyküsü, ilişkileri, kaynakları ve içinde bulunduğu koşullarla bir bütün olarak anlamaya özen gösteriyorum.</p>
+          <a class="link" href="ben-kimim.html" style="margin-top:14px">Özgeçmişin tamamı </a></div>
+        <div class="ring">
+          <div class="ph"><b>SÜ</b><small>Portre</small></div>
+          <span class="cap">Selin Ünal</span>
+        </div>
+        <div class="side">
+          <p class="eyebrow"><i></i> Eğitim &amp; Sertifikalar</p>
+          <div class="certs"><div><b>2015</b><p style="margin:0"><strong>Psikoloji (Lisans)</strong><em>Üniversite bilgisi eklenecek</em></p></div><div><b>2018</b><p style="margin:0"><strong>Klinik Psikoloji (Y. Lisans)</strong><em>Üniversite bilgisi eklenecek</em></p></div><div><b>2018</b><p style="margin:0"><strong>Bilişsel Davranışçı Terapi</strong><em>Eğitim kurumu eklenecek</em></p></div><div><b>2019</b><p style="margin:0"><strong>EMDR 1. Düzey</strong><em>Eğitim kurumu eklenecek</em></p></div><div><b>2020</b><p style="margin:0"><strong>EMDR 2. Düzey</strong><em>Eğitim kurumu eklenecek</em></p></div><div><b>2021</b><p style="margin:0"><strong>Şema Terapi</strong><em>Eğitim kurumu eklenecek</em></p></div><div><b>2021</b><p style="margin:0"><strong>Çift ve Aile Terapisi</strong><em>Eğitim kurumu eklenecek</em></p></div><div><b>2022</b><p style="margin:0"><strong>Oyun Terapisi</strong><em>Eğitim kurumu eklenecek</em></p></div><div><b>2019</b><p style="margin:0"><strong>MMPI Kişilik Envanteri</strong><em>Eğitim kurumu eklenecek</em></p></div><div><b>2019</b><p style="margin:0"><strong>WISC-R Zeka Testi</strong><em>Eğitim kurumu eklenecek</em></p></div><div><b>2020</b><p style="margin:0"><strong>Frankfurt Dikkat Testi</strong><em>Eğitim kurumu eklenecek</em></p></div><div><b>2020</b><p style="margin:0"><strong>Bender Gestalt</strong><em>Eğitim kurumu eklenecek</em></p></div><div><b>2020–</b><p style="margin:0"><strong>Bireysel süpervizyon</strong><em>Süpervizör bilgisi eklenecek</em></p></div><div><b>2022–</b><p style="margin:0"><strong>Vaka grubu süpervizyonu</strong><em>Kurum bilgisi eklenecek</em></p></div><div><b>2018–</b><p style="margin:0"><strong>Türk Psikologlar Derneği</strong><em>Üyelik bilgisi eklenecek</em></p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- D2 -->
+  <section class="wrap variant">
+    <div class="vhead"><b>D2 — Aynı düzen, dengelenmiş</b><span class="vtag">önerim</span>
+      <span class="vnote">Sağ sütunda 15 satır yerine 5 kategori + sayı; tam liste dairenin altında tek şerit hâlinde. Üç sütunun boyu eşitleniyor, daire gerçekten ortada duruyor.</span></div>
+    <div class="stage">
+      <div class="gd gd2">
+        <div class="side"><p class="eyebrow"><i></i> Hakkımda</p>
+          <h2 class="h2" style="font-size:var(--text-h3)">Beni <em>tanıyın.</em></h2>
+          <p class="lead" style="font-size:19px;margin:14px 0 14px">Her insanın hikâyesi kendine özgüdür; terapi de o hikâyeye dikkatle yaklaşan güvenli bir karşılaşmadır.</p>
+          <p class="body">Merhaba, ben Selin. Terapiyi kişinin kendi iç dünyasını daha yakından tanıdığı; duygularına, ihtiyaçlarına ve ilişkilerine yeni bir yerden bakabildiği güvenli bir süreç olarak görüyorum.</p>
+          <p class="body">Çalışmalarımda kişiyi tek bir belirti üzerinden değil; yaşam öyküsü, ilişkileri, kaynakları ve içinde bulunduğu koşullarla bir bütün olarak anlamaya özen gösteriyorum.</p>
+          <a class="link" href="ben-kimim.html" style="margin-top:14px">Özgeçmişin tamamı </a></div>
+        <div class="ring">
+          <div class="ph"><b>SÜ</b><small>Portre</small></div>
+          <span class="cap">Selin Ünal</span>
+        </div>
+        <div class="side">
+          <p class="eyebrow"><i></i> Eğitim &amp; Sertifikalar</p>
+          <div class="certs">
+            <div><strong>Akademik eğitim</strong><span>2</span></div>
+            <div><strong>Terapi eğitimleri</strong><span>6</span></div>
+            <div><strong>Test ve ölçek eğitimleri</strong><span>4</span></div>
+            <div><strong>Süpervizyon</strong><span>2</span></div>
+            <div><strong>Mesleki üyelik</strong><span>1</span></div>
+          </div>
+          <a class="link" href="ben-kimim.html" style="margin-top:18px">15 kaydın tamamı </a>
+        </div>
+      </div>
+      <div class="gd2 full">
+        <span>Çalıştığım yaklaşımlar</span>
+        <div class="chips"><span>Bilişsel Davranışçı Terapi</span><span>EMDR</span><span>Şema Terapi</span><span>Oyun Terapisi</span><span>Çift ve Aile Terapisi</span><span>MMPI</span><span>WISC-R</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- D3 -->
+  <section class="wrap variant">
+    <div class="vhead"><b>D3 — Eşit yükseklik, künye metin olarak</b><span class="vtag">istediğin hâli</span>
+      <span class="vnote">Solda anlatı, ortada daire, sağda 15 kaydın tamamı metin olarak. Satırlar tek satıra indirildiği için iki yan sütun aynı boyda bitiyor, daire tam ortada hizalanıyor.</span></div>
+    <div class="stage">
+      <div class="sizer">
+        <span>Portre çapı:</span>
+        <input type="radio" name="d3size" id="s250" checked><label for="s250">250 px (mevcut)</label>
+        <input type="radio" name="d3size" id="s280"><label for="s280">280 px</label>
+        <input type="radio" name="d3size" id="s320"><label for="s320">320 px</label>
+        <input type="radio" name="d3size" id="s360"><label for="s360">360 px</label>
+        <input type="radio" name="d3size" id="sfluid"><label for="sfluid">Akışkan (250–380)</label>
+      </div>
+      <div class="gd3">
+        <div class="side">
+          <p class="eyebrow"><i></i> Hakkımda</p>
+          <h2 class="h2" style="font-size:var(--text-h3)">Beni <em>tanıyın.</em></h2>
+          <p class="lead" style="font-size:19px;margin:12px 0 14px">Her insanın hikâyesi kendine özgüdür; terapi de o hikâyeye dikkatle yaklaşan güvenli bir karşılaşmadır.</p>
+          <p class="body">Merhaba, ben Selin. Terapiyi kişinin kendi iç dünyasını daha yakından tanıdığı; duygularına, ihtiyaçlarına ve ilişkilerine yeni bir yerden bakabildiği güvenli bir süreç olarak görüyorum.</p>
+          <p class="body">Çalışmalarımda kişiyi tek bir belirti üzerinden değil; yaşam öyküsü, ilişkileri, kaynakları ve içinde bulunduğu koşullarla bir bütün olarak anlamaya özen gösteriyorum.</p>
+          <p class="body">Sürecin hedeflerini ve ritmini danışanla birlikte belirlemeyi; yargısız, eşitlikçi bir ilişki kurmayı önemsiyorum.</p>
+          <a class="link" href="ben-kimim.html">Özgeçmişin tamamı </a>
+        </div>
+        <div class="ring">
+          <div class="ph"><b>SÜ</b><small>Portre</small></div>
+          <span class="cap">Selin Ünal</span>
+        </div>
+        <div class="side">
+          <p class="eyebrow"><i></i> Eğitim, terapi ve sertifikalar</p>
+          <div class="cv"><div class="cat">Akademik eğitim</div><div class="row"><b>2015</b><span>Psikoloji, Lisans</span></div><div class="row"><b>2018</b><span>Klinik Psikoloji, Yüksek Lisans</span></div><div class="cat">Terapi eğitimleri</div><div class="row"><b>2018</b><span>Bilişsel Davranışçı Terapi</span></div><div class="row"><b>2019</b><span>EMDR 1. Düzey</span></div><div class="row"><b>2020</b><span>EMDR 2. Düzey</span></div><div class="row"><b>2021</b><span>Şema Terapi</span></div><div class="row"><b>2021</b><span>Çift ve Aile Terapisi</span></div><div class="row"><b>2022</b><span>Oyun Terapisi</span></div><div class="cat">Test ve ölçek eğitimleri</div><div class="row"><b>2019</b><span>MMPI Kişilik Envanteri</span></div><div class="row"><b>2019</b><span>WISC-R Zeka Testi</span></div><div class="row"><b>2020</b><span>Frankfurt Dikkat Testi</span></div><div class="row"><b>2020</b><span>Bender Gestalt</span></div><div class="cat">Süpervizyon ve üyelik</div><div class="row"><b>2020–</b><span>Bireysel süpervizyon</span></div><div class="row"><b>2022–</b><span>Vaka grubu süpervizyonu</span></div><div class="row"><b>2018–</b><span>Türk Psikologlar Derneği</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wbar">
+    <span>Sahne genişliği:</span>
+    <input type="radio" name="w" id="w1080"><label for="w1080">1080 px (eski)</label>
+    <input type="radio" name="w" id="w1280" checked><label for="w1280">1280 px (yeni .shell)</label>
+    <input type="radio" name="w" id="w1360"><label for="w1360">1360 px</label>
+    <input type="radio" name="w" id="w1560"><label for="w1560">1560 px</label>
+    <input type="radio" name="w" id="wfull"><label for="wfull">Tam genişlik</label>
+    <span class="now">Ekranın: <b id="vw">–</b> px</span>
+  </div>
+  <div class="wrap page-head" style="padding-top:34px">
+    <h2 style="font-size:var(--text-h2);margin-bottom:8px">Webde yaygın diğer kalıplar</h2>
+    <p>Yukarıdakiler aynı fikrin varyasyonlarıydı. Aşağıdaki üçü, benzer işlerde (terapist, avukat, diyetisyen, koç, mimar) sık kullanılan <b>farklı</b> düzen mantıkları.</p>
+  </div>
+
+  <!-- E -->
+  <section class="wrap variant">
+    <div class="vhead"><b>E — Yapışkan portre + sekmeli künye</b><span class="vtag">UX açısından en güçlüsü</span>
+      <span class="vnote">Portre kaydırırken sabit kalır; 15 kayıt 4 sekmeye bölünür, ekranda hep 2–7 satır durur. Bölüm kısa kalır ama hiçbir içerik silinmez. Yanında deneyim/danışan sayısı gibi güven verileri var.</span></div>
+    <div class="stage">
+      <div class="ge">
+        <div class="col-l">
+          <div class="ph"><b>SÜ</b><small>Portre</small></div>
+          <div class="meta">
+            <div><b>8</b><span>YIL DENEYİM</span></div>
+            <div><b>15</b><span>EĞİTİM / SERTİFİKA</span></div>
+            <div><b>500+</b><span>GÖRÜŞME</span></div>
+          </div>
+        </div>
+        <div>
+          <p class="eyebrow"><i></i> Hakkımda</p>
+          <h2 class="h2">Beni <em>tanıyın.</em></h2>
+          <p class="lead" style="margin:14px 0 16px">Her insanın hikâyesi kendine özgüdür; terapi de o hikâyeye dikkatle yaklaşan güvenli bir karşılaşmadır.</p>
+          <p class="body">Merhaba, ben Selin. Terapiyi kişinin kendi iç dünyasını daha yakından tanıdığı; duygularına, ihtiyaçlarına ve ilişkilerine yeni bir yerden bakabildiği güvenli bir süreç olarak görüyorum.</p>
+          <p class="body">Çalışmalarımda kişiyi tek bir belirti üzerinden değil; yaşam öyküsü, ilişkileri, kaynakları ve içinde bulunduğu koşullarla bir bütün olarak anlamaya özen gösteriyorum.</p>
+          <div class="tabs">
+            <input type="radio" name="getab" id="ge1" checked>
+            <input type="radio" name="getab" id="ge2">
+            <input type="radio" name="getab" id="ge3">
+            <input type="radio" name="getab" id="ge4">
+            <div class="tabbar">
+              <label for="ge1">Akademik eğitim</label>
+              <label for="ge2">Terapi eğitimleri</label>
+              <label for="ge3">Test ve ölçekler</label>
+              <label for="ge4">Süpervizyon ve üyelik</label>
+            </div>
+            <div class="panel p1">
+              <div class="row"><b>2015</b><span>Psikoloji, Lisans</span></div>
+              <div class="row"><b>2018</b><span>Klinik Psikoloji, Yüksek Lisans</span></div>
+            </div>
+            <div class="panel p2">
+              <div class="row"><b>2018</b><span>Bilişsel Davranışçı Terapi</span></div>
+              <div class="row"><b>2019</b><span>EMDR 1. Düzey</span></div>
+              <div class="row"><b>2020</b><span>EMDR 2. Düzey</span></div>
+              <div class="row"><b>2021</b><span>Şema Terapi</span></div>
+              <div class="row"><b>2021</b><span>Çift ve Aile Terapisi</span></div>
+              <div class="row"><b>2022</b><span>Oyun Terapisi</span></div>
+            </div>
+            <div class="panel p3">
+              <div class="row"><b>2019</b><span>MMPI Kişilik Envanteri</span></div>
+              <div class="row"><b>2019</b><span>WISC-R Zeka Testi</span></div>
+              <div class="row"><b>2020</b><span>Frankfurt Dikkat Testi</span></div>
+              <div class="row"><b>2020</b><span>Bender Gestalt</span></div>
+            </div>
+            <div class="panel p4">
+              <div class="row"><b>2020–</b><span>Bireysel süpervizyon</span></div>
+              <div class="row"><b>2022–</b><span>Vaka grubu süpervizyonu</span></div>
+              <div class="row"><b>2018–</b><span>Türk Psikologlar Derneği</span></div>
+            </div>
+          </div>
+          <a class="link" href="ben-kimim.html" style="margin-top:22px">Özgeçmişin tamamı </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- F -->
+  <section class="wrap variant">
+    <div class="vhead"><b>F — Bindirmeli anlatı kartı + güven şeridi</b><span class="vtag">Dönüşüm odaklı</span>
+      <span class="vnote">Büyük portre, üzerine binen beyaz kart, imza ve altta 4 sayılık güven şeridi. Kişisel marka sitelerinin standardı; sıcak ve ikna edici. Künye burada değil, ikinci sayfada durur.</span></div>
+    <div class="stage">
+      <div class="gf">
+        <div class="ph"><b>SÜ</b><small>Portre</small></div>
+        <div class="card">
+          <p class="eyebrow"><i></i> Hakkımda</p>
+          <h2 class="h2" style="font-size:var(--text-h3)">Beni <em>tanıyın.</em></h2>
+          <p class="lead" style="font-size:19px;margin:12px 0 14px">Her insanın hikâyesi kendine özgüdür; terapi de o hikâyeye dikkatle yaklaşan güvenli bir karşılaşmadır.</p>
+          <p class="body">Merhaba, ben Selin. Terapiyi kişinin kendi iç dünyasını daha yakından tanıdığı; duygularına, ihtiyaçlarına ve ilişkilerine yeni bir yerden bakabildiği güvenli bir süreç olarak görüyorum.</p>
+          <p class="body">Sürecin hedeflerini ve ritmini danışanla birlikte belirlemeyi; yargısız, eşitlikçi bir ilişki kurmayı önemsiyorum.</p>
+          <div class="sign">Selin Ünal</div>
+          <small>Uzman Klinik Psikolog</small>
+        </div>
+        <div class="trust">
+          <div><b>8</b><span>YIL DENEYİM</span></div>
+          <div><b>15</b><span>EĞİTİM / SERTİFİKA</span></div>
+          <div><b>500+</b><span>GÖRÜŞME</span></div>
+          <div><b>2018–</b><span>TPD ÜYESİ</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- G -->
+  <section class="wrap variant">
+    <div class="vhead"><b>G — Bento düzeni</b><span class="vtag">En modern görünen</span>
+      <span class="vnote">İçerik modüler kutulara bölünür: anlatı, portre, sayılar, yaklaşımlar, alıntı, randevu. Taranması çok kolay ve mobilde kendiliğinden diziliyor; ama "sıcak/samimi"den çok "ürün sayfası" hissi verir.</span></div>
+    <div class="stage">
+      <div class="gg">
+        <div class="b-intro">
+          <p class="tag">Hakkımda</p>
+          <h2 class="h2" style="font-size:var(--text-h3)">Beni <em>tanıyın.</em></h2>
+          <p class="body">Merhaba, ben Selin. Terapiyi kişinin kendi iç dünyasını daha yakından tanıdığı; duygularına ve ilişkilerine yeni bir yerden bakabildiği güvenli bir süreç olarak görüyorum.</p>
+        </div>
+        <div class="b-photo"><div class="ph"><b>SÜ</b><small>Portre</small></div></div>
+        <div class="b-num"><b>8</b><span>YIL DENEYİM</span></div>
+        <div class="b-num"><b>15</b><span>SERTİFİKA</span></div>
+        <div class="b-chips">
+          <p class="tag">Çalıştığım yaklaşımlar</p>
+          <div class="chips"><span>BDT</span><span>EMDR</span><span>Şema Terapi</span><span>Oyun Terapisi</span><span>Çift ve Aile</span><span>MMPI</span><span>WISC-R</span></div>
+        </div>
+        <div class="b-quote"><p>“Yargısız, eşitlikçi bir ilişki; sürecin hedefini birlikte belirlediğimiz bir alan.”</p></div>
+        <div class="b-cta"><h3>Özgeçmişin tamamı</h3><a class="btn" href="ben-kimim.html">15 kaydı gör</a></div>
+      </div>
+    </div>
+  </section>
+  <script>
+    const vw=document.getElementById('vw');
+    const show=()=>vw.textContent=window.innerWidth;
+    show();addEventListener('resize',show);
+  </script>
+</body>
+</html>

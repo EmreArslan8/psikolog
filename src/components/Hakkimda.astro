@@ -1,0 +1,198 @@
+---
+---
+
+<section id="hakkimda" class="about-section">
+  <div class="about-layout">
+    <div class="about-content reveal">
+      <p class="eyebrow"><span></span> Hakkımda</p>
+      <h2>İnsanı anlayan,<br><em>güvene dayalı</em> bir süreç.</h2>
+
+      <p class="about-lead">Merhaba, ben Psikolog / Aile Danışmanı Selin Ünal.</p>
+      <p>Zonguldak Bülent Ecevit Üniversitesi Psikoloji Bölümü’nden mezun oldum. Karabük Eğitim ve Araştırma Hastanesi ile Şafak Özel Eğitim ve Rehabilitasyon Merkezi’nde çocuk, genç ve yetişkinlerle çalışma deneyimi kazandım.</p>
+      <p>Bilişsel Davranışçı Terapi yaklaşımıyla, güvenli ve yargılamayan bir alanda danışanların duygu, düşünce ve davranışları arasındaki bağı fark etmelerine eşlik ediyorum.</p>
+
+      <a class="plain-link" href="/ben-kimim">Özgeçmişin tamamı <span aria-hidden="true">→</span></a>
+    </div>
+
+    <figure class="about-portrait reveal reveal-delay">
+      <div class="photo-placeholder" role="img" aria-label="Selin Ünal monogramı">
+        <b>SÜ</b>
+        <small>Psikolog</small>
+      </div>
+      <figcaption>
+        <span>Psikolog · Aile Danışmanı</span>
+        <strong>Selin Ünal</strong>
+      </figcaption>
+    </figure>
+
+    <aside class="credentials reveal" aria-label="Eğitim, sertifika ve deneyim bilgileri">
+      <div class="credentials-heading">
+        <p class="eyebrow"><span></span> Mesleki Künye</p>
+        <h3>Eğitim, deneyim<br><em>ve yaklaşım.</em></h3>
+      </div>
+
+        <article class="credential-card">
+          <span class="credential-number">01</span>
+          <div>
+            <p class="credential-label">Eğitim</p>
+            <h3>Psikoloji, Lisans</h3>
+            <p>Zonguldak Bülent Ecevit Üniversitesi</p>
+          </div>
+        </article>
+
+        <article class="credential-card">
+          <span class="credential-number">02</span>
+          <div>
+            <p class="credential-label">Yaklaşım &amp; Sertifika</p>
+            <h3>Bilişsel Davranışçı Terapi</h3>
+            <p>Danışan odaklı, güvenli ve bireye özgü çalışma</p>
+          </div>
+        </article>
+
+        <article class="credential-card">
+          <span class="credential-number">03</span>
+          <div>
+            <p class="credential-label">Deneyim</p>
+            <h3>Çocuk, ergen ve yetişkinlerle çalışma</h3>
+            <p>Karabük Eğitim ve Araştırma Hastanesi · Şafak Özel Eğitim ve Rehabilitasyon Merkezi</p>
+          </div>
+        </article>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    padding: 118px 0;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 92% 12%, rgba(95, 116, 95, .09), transparent 30%),
+      var(--paper);
+  }
+
+  .about-layout {
+    width: min(1280px, calc(100% - 48px));
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: minmax(0, .92fr) minmax(320px, .8fr) minmax(310px, .84fr);
+    gap: clamp(34px, 3.2vw, 50px);
+    align-items: start;
+  }
+
+  .about-content { min-width: 0; padding-top: 14px; }
+  .about-content h2 { max-width: 500px; font-size: clamp(42px, 3.2vw, 50px); line-height: 1.02; }
+
+  .about-lead {
+    max-width: 440px;
+    margin: 28px 0 18px;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: clamp(20px, 1.45vw, 23px);
+    line-height: 1.4;
+  }
+
+  .about-content > p:not(.eyebrow):not(.about-lead) {
+    max-width: 52ch;
+    margin-bottom: 17px;
+    color: var(--ink-soft);
+    font-size: var(--type-description);
+    line-height: 1.68;
+  }
+
+  .credentials {
+    min-width: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .credentials-heading { padding: 12px 0 24px; }
+  .credentials-heading .eyebrow { margin-bottom: 18px; }
+  .credentials-heading h3 { margin: 0; font-family: var(--serif); font-size: clamp(30px, 2.2vw, 34px); font-weight: 400; line-height: 1.06; }
+  .credentials-heading h3 em { color: var(--brand); font-weight: 400; }
+
+  .credential-card {
+    min-height: 0;
+    padding: 20px 0;
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 14px;
+    border: 0;
+    border-top: 1px solid var(--line);
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .credential-number { padding-top: 3px; color: var(--brand); font-size: 11px; font-weight: 700; letter-spacing: .1em; }
+  .credential-label { margin: 0 0 8px; color: var(--brand); font-size: 11px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+  .credential-card h3 { margin: 0 0 7px; color: var(--ink); font-family: var(--serif); font-size: clamp(21px, 1.55vw, 25px); font-weight: 400; line-height: 1.12; }
+  .credential-card p:last-child { margin: 0; color: var(--ink-soft); font-size: 13px; line-height: 1.62; }
+
+  .about-portrait { margin: 0; position: relative; align-self: center; }
+  .about-portrait::before {
+    content: "";
+    position: absolute;
+    inset: 20px -20px -20px 20px;
+    border: 1px solid rgba(95, 116, 95, .22);
+    border-radius: 220px 220px 28px 28px;
+  }
+
+  .about-portrait img,
+  .about-portrait .photo-placeholder {
+    width: 100%;
+    height: clamp(420px, 36vw, 500px);
+    position: relative;
+    object-fit: cover;
+    object-position: center 32%;
+    border-radius: 220px 220px 28px 28px;
+    box-shadow: 0 26px 70px rgba(48, 53, 46, .12);
+  }
+
+  .about-portrait figcaption {
+    position: absolute;
+    right: -18px;
+    bottom: 28px;
+    padding: 14px 20px;
+    border: 1px solid rgba(255, 253, 247, .8);
+    border-radius: 14px;
+    background: rgba(255, 253, 247, .92);
+    box-shadow: 0 16px 42px rgba(48, 53, 46, .12);
+    backdrop-filter: blur(14px);
+  }
+
+  .about-portrait figcaption span { display: block; color: var(--brand); font-size: 8px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+  .about-portrait figcaption strong { display: block; margin-top: 3px; font-family: var(--serif); font-size: 21px; font-weight: 400; }
+
+  @media (max-width: 1080px) {
+    .about-layout { grid-template-columns: minmax(0, 1fr) 310px; gap: 44px 52px; }
+    .about-content { grid-column: 1; grid-row: 1; }
+    .about-portrait { grid-column: 2; grid-row: 1 / 3; }
+    .about-portrait img,
+    .about-portrait .photo-placeholder { height: 430px; }
+    .credentials { grid-column: 1; grid-row: 2; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .credentials-heading { grid-column: 1 / -1; padding-top: 4px; }
+    .credential-card { padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255, 253, 247, .55); }
+  }
+
+  @media (max-width: 760px) {
+    .about-section { padding: 78px 0 88px; }
+    .about-layout { width: calc(100% - 36px); grid-template-columns: 1fr; gap: 54px; }
+    .about-content, .about-portrait, .credentials { grid-column: 1; grid-row: auto; }
+    .about-content { max-width: none; padding-top: 0; }
+    .about-portrait { width: min(390px, 88%); justify-self: center; }
+    .about-portrait img,
+    .about-portrait .photo-placeholder { height: auto; aspect-ratio: .9; }
+    .credentials { grid-template-columns: 1fr; gap: 0; }
+    .credentials-heading { grid-column: auto; padding-top: 0; }
+    .credential-card { padding: 20px 0; border-width: 1px 0 0; border-radius: 0; background: transparent; }
+    .about-portrait::before { inset: 14px -14px -14px 14px; }
+  }
+
+  @media (max-width: 480px) {
+    .about-content h2 { font-size: var(--type-section-title); }
+    .credential-card { min-height: 0; padding: 19px 0; }
+    .about-portrait { width: 88%; }
+    .about-portrait figcaption { right: -10px; bottom: 18px; }
+  }
+</style>

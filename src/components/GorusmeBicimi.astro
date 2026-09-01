@@ -1,0 +1,53 @@
+<section id="gorusme-bicimi" class="meeting-section">
+  <div class="shell">
+    <header class="meeting-heading reveal">
+      <p class="eyebrow"><span></span> Görüşme biçimi</p>
+      <h2>Size en uygun ortamda<br><em>devam edelim.</em></h2>
+    </header>
+
+    <div class="meeting-grid">
+      <article class="meeting-card meeting-face reveal">
+        <span class="meeting-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></svg>
+        </span>
+        <span class="meeting-label">Karabük Merkez</span>
+        <h3>Yüz Yüze Görüşme</h3>
+        <p>Seanslar, sakin ve güvenli bir görüşme ortamında randevu ile planlanır.</p>
+        <a href="#iletisim">Randevu talebi <span aria-hidden="true">→</span></a>
+      </article>
+
+      <article class="meeting-card meeting-online reveal">
+        <span class="meeting-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></svg>
+        </span>
+        <span class="meeting-label">Türkiye Geneli</span>
+        <h3>Online Görüşme</h3>
+        <p>Bulunduğunuz yerden bağımsız olarak güvenli görüntülü görüşme aracılığıyla destek alabilirsiniz.</p>
+        <a href="#iletisim">Randevu talebi <span aria-hidden="true">→</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .meeting-section { padding-block: 92px; overflow: hidden; background: var(--paper); }
+  .meeting-heading { max-width: 720px; margin-bottom: 40px; }
+  .meeting-heading h2 { font-size: var(--type-section-title); line-height: var(--type-section-leading); }
+  .meeting-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
+  .meeting-card { min-width: 0; min-height: 300px; padding: 34px 36px; display: flex; flex-direction: column; align-items: flex-start; border: 1px solid var(--line); border-radius: 20px; }
+  .meeting-face { background: var(--brand-wash); }
+  .meeting-online { background: var(--surface); }
+  .meeting-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; background: rgba(95,116,95,.11); color: var(--brand); }
+  .meeting-icon svg { width: 21px; height: 21px; }
+  .meeting-label { margin-top: 27px; color: var(--brand); font-size: var(--type-subtitle); font-weight: 700; letter-spacing: var(--ls-label); text-transform: uppercase; }
+  .meeting-card h3 { margin: 9px 0 12px; font-family: var(--serif); font-size: var(--type-card-title); font-weight: 400; line-height: var(--type-card-leading); }
+  .meeting-card p { max-width: 48ch; margin: 0 0 25px; color: var(--ink-soft); font-size: var(--type-description); line-height: var(--type-description-leading); }
+  .meeting-card a { margin-top: auto; display: inline-flex; align-items: center; gap: 12px; color: var(--brand); font-size: var(--type-meta); font-weight: 650; }
+  .meeting-card a span { transition: transform .2s ease; }
+  .meeting-card a:hover span { transform: translateX(4px); }
+  @media (max-width: 680px) {
+    .meeting-section { padding-block: 72px; }
+    .meeting-grid { grid-template-columns: 1fr; }
+    .meeting-card { min-height: 270px; padding: 28px 24px; }
+  }
+</style>
