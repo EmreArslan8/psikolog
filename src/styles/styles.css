@@ -258,6 +258,11 @@ html:has(.site-nav.is-open) body{overflow:hidden}
 .quote-band .quote-arrow svg{width:14px;height:14px}
 .quote-dots{display:flex;align-items:center;gap:9px}
 .quote-dot{width:7px;height:7px;padding:0;border:0;border-radius:999px;background:rgba(95,116,95,.24);cursor:pointer;transition:width .3s ease,background .3s ease}
+
+/* Hero portresi placeholder ölçüsünü korur; fotoğraf yalnızca çerçevenin içine kırpılır. */
+.hero .portrait-wrap .photo-placeholder.has-photo{overflow:hidden}
+.hero .portrait-wrap .photo-placeholder.has-photo::before{display:none}
+.hero .portrait-wrap .photo-placeholder.has-photo>img{width:100%;height:100%;max-width:none;aspect-ratio:auto;object-fit:cover;object-position:50% 44%;border-radius:inherit;position:static}
 .quote-dot:hover{background:rgba(95,116,95,.45)}
 .quote-dot.is-active{width:24px;background:var(--brand)}
 .quote-band :focus-visible{outline:2px solid var(--brand);outline-offset:3px}
@@ -312,6 +317,7 @@ html:has(.site-nav.is-open) body{overflow:hidden}
 .h1-kicker{order:-1;display:flex;align-items:center;gap:0;margin-bottom:22px;color:var(--brand);font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.2em;line-height:1;text-transform:uppercase}
 .h1-kicker .kicker-rule{width:28px;height:1px;flex:none;margin-right:12px;background:var(--brand-soft)}
 .h1-name{white-space:nowrap}
+.h1-name em{font-family:inherit;font-style:normal}
 .hero-lead{max-width:470px;margin:26px 0 0;color:var(--ink);font-family:var(--serif);font-size:var(--text-lead);line-height:1.4}
 .hero-lead+.hero-text{margin-top:16px}
 @media(max-width:580px){.h1-kicker{font-size:11px;margin-bottom:13px}.hero-lead{font-size:19px}}
@@ -422,3 +428,8 @@ html:has(.site-nav.is-open) body{overflow:hidden}
 .brand-line{color:var(--ink);font-family:var(--serif);font-size:25px;font-weight:400;line-height:1;letter-spacing:0;white-space:nowrap}
 @media(max-width:1040px) and (min-width:851px){.brand-line{font-size:18px}}
 @media(max-width:850px){.brand-line{font-size:14px}}
+
+/* Ben Kimim portresi de kendi placeholder çerçevesinin ölçüsünde kalır. */
+.about-photo>.photo-placeholder.has-photo{overflow:hidden}
+.about-photo>.photo-placeholder.has-photo::before{display:none}
+.about-photo>.photo-placeholder.has-photo>img{width:100%;height:100%;max-width:none;aspect-ratio:auto;object-fit:cover;object-position:50% 42%;border-radius:inherit;position:static}
