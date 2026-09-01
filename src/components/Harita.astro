@@ -33,8 +33,22 @@
   .map-card.is-visible { transform: translateY(-50%); }
 
   @media (max-width: 580px) {
-    .map-section { height: 500px; }
-    .map-card { top: auto; bottom: 18px; transform: none; }
+    .map-section { height: clamp(230px, 62vw, 270px); }
+    .map-card {
+      width: calc(100% - 36px);
+      left: 18px;
+      top: auto;
+      bottom: 12px;
+      padding: 14px 16px;
+      grid-template-columns: 28px 1fr;
+      gap: 10px;
+      border-radius: 14px;
+      transform: none;
+    }
+    .map-card > svg { width: 20px; height: 20px; }
+    .map-card span { margin-bottom: 3px; font-size: 8px; }
+    .map-card strong { font-size: 20px; }
+    .map-card p { display: none; }
     .map-card.is-visible { transform: none; }
   }
 </style>

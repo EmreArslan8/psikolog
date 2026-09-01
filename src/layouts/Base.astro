@@ -32,8 +32,6 @@ const url = new URL(canonical, Astro.site).href;
   <meta name="author" content="Psikolog Selin Ünal">
   <meta name="geo.region" content="TR-78">
   <meta name="geo.placename" content="Karabük">
-  <meta name="geo.position" content="41.204167;32.622222">
-  <meta name="ICBM" content="41.204167, 32.622222">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="tr_TR">
   <meta property="og:site_name" content="Psikolog Selin Ünal">
@@ -45,9 +43,9 @@ const url = new URL(canonical, Astro.site).href;
   <meta name="twitter:title" content={ogTitle}>
   <meta name="twitter:description" content={ogDescription}>
   <meta name="twitter:image" content={ogImage}>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
+  <link rel="preload" href="/fonts/dm-sans-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/newsreader-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/newsreader-italic-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
   <script src="/script.js" defer is:inline></script>
   <slot name="head" />
 </head>

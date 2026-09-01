@@ -146,6 +146,11 @@
 .contact-band h2 em{color:var(--brand-soft)}
 
 html, body{max-width:100%;overflow-x:clip}
+/* Kaydırma çubuğunun yeri hep ayrılı: menü açılıp kapanırken sayfa yana kaymaz */
+html{scrollbar-gutter:stable}
+/* Menü açıkken arka plan kilidi — JS ile body.style.overflow kurcalamaya gerek yok */
+html:has(.site-nav.is-open){overflow:hidden}
+html:has(.site-nav.is-open) body{overflow:hidden}
 
 .approaches-section{background:var(--paper)}
 .approach-wash{background:repeating-linear-gradient(0deg,transparent 0 71px,rgba(48,53,46,.045) 71px 72px)}
@@ -326,6 +331,9 @@ html, body{max-width:100%;overflow-x:clip}
 .hero-meta{margin:30px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;color:var(--ink-mute);font-size:var(--text-meta)}
 .hero-meta li{display:flex;align-items:center;gap:7px}
 .hero-meta svg{width:15px;height:15px;color:var(--brand);opacity:.75}
+.hero-meta .meta-copy{display:flex;align-items:baseline;gap:4px}
+.hero-meta .meta-copy small{display:none}
+.hero-meta .meta-copy strong{font:inherit;font-weight:400}
 @media(max-width:580px){.hero-meta{gap:9px 14px;font-size:12px;margin-top:24px}}
 
 
@@ -397,15 +405,20 @@ html, body{max-width:100%;overflow-x:clip}
   .footer-bottom{padding:14px 0 22px;gap:6px}
   .footer-bottom p{font-size:10.5px;line-height:1.6}}
 
-/* Mobil hero: ortali yerlesim, alcak header, cip yerine serif ust satir */
+/* Mobil hero: ferah, ortali yerlesim; cip yerine serif ust satir */
 @media(max-width:850px){
   .site-header{height:62px}
-  .hero{padding-block:18px 24px;text-align:center}
+  .hero{padding-block:30px 60px;text-align:center}
   .hero h1{align-items:center;gap:0}
-  .hero .h1-kicker{justify-content:center;margin-bottom:2px;color:var(--ink-soft);font-family:var(--serif);font-size:clamp(21px,6.4vw,26px);font-weight:400;letter-spacing:-.01em;line-height:1.15;text-transform:none}
+  .hero .h1-kicker{justify-content:center;margin-bottom:5px;color:var(--ink-soft);font-family:var(--serif);font-size:clamp(21px,6.4vw,26px);font-weight:400;letter-spacing:-.01em;line-height:1.15;text-transform:none}
   .hero .kicker-rule, .hero .kicker-tail{display:none}
-  .hero .portrait-wrap{margin:0 0 22px}
-  .hero .hero-lead{max-width:31ch;margin:14px auto 12px}
-  .hero .hero-text{max-width:38ch;margin:0 auto 20px}
-  .hero .hero-actions{justify-content:center}
-  .hero .hero-meta{align-items:center;margin-top:20px}}
+  .hero .portrait-wrap{width:152px;margin:0 0 30px}
+  .hero .hero-lead{width:100%;max-width:36ch;margin:20px auto 14px;font-size:19px;line-height:1.45}
+  .hero .hero-text{width:100%;max-width:none;margin:0 auto 26px;font-size:13.5px;line-height:1.75}
+  .hero .hero-actions{justify-content:center;gap:18px}
+  .hero .hero-meta{display:none}}
+
+/* Header ve footer metin markası: tek tipografi kaynağı */
+.brand-line{color:var(--ink);font-family:var(--serif);font-size:25px;font-weight:400;line-height:1;letter-spacing:0;white-space:nowrap}
+@media(max-width:1040px) and (min-width:851px){.brand-line{font-size:18px}}
+@media(max-width:850px){.brand-line{font-size:14px}}

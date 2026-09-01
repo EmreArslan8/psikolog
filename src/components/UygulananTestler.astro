@@ -66,24 +66,50 @@ const tests = [
   if (track && cards?.length && previous instanceof HTMLButtonElement && next instanceof HTMLButtonElement) {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let autoplayTimer: number | undefined;
+    let updateFrame: number | undefined;
     let isVisible = false;
+    let step = 0;
+    let maxScroll = 0;
 
-    const update = () => {
+    const measure = () => {
       const card = cards[0];
       if (!(card instanceof HTMLElement)) return;
       const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0;
-      const step = card.offsetWidth + gap;
-      const index = Math.min(cards.length - 1, Math.max(0, Math.round(track.scrollLeft / step)));
+      step = card.offsetWidth + gap;
+      maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+    };
+
+    const update = () => {
+      const scrollLeft = track.scrollLeft;
+      const index = step > 0
+        ? Math.min(cards.length - 1, Math.max(0, Math.round(scrollLeft / step)))
+        : 0;
+      const atStart = scrollLeft <= 2;
+      const atEnd = scrollLeft >= maxScroll - 2;
+
       if (current) current.textContent = String(index + 1).padStart(2, '0');
-      previous.disabled = track.scrollLeft <= 2;
-      next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+      previous.disabled = atStart;
+      next.disabled = atEnd;
+    };
+
+    const scheduleUpdate = () => {
+      if (updateFrame) return;
+      updateFrame = window.requestAnimationFrame(() => {
+        updateFrame = undefined;
+        update();
+      });
+    };
+
+    const refresh = () => {
+      window.requestAnimationFrame(() => {
+        measure();
+        update();
+      });
     };
 
     const move = (direction: number) => {
-      const card = cards[0];
-      if (!(card instanceof HTMLElement)) return;
-      const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0;
-      track.scrollBy({ left: direction * (card.offsetWidth + gap), behavior: 'smooth' });
+      if (step <= 0) return;
+      track.scrollBy({ left: direction * step, behavior: 'smooth' });
     };
 
     const stopAutoplay = () => window.clearInterval(autoplayTimer);
@@ -91,7 +117,7 @@ const tests = [
       stopAutoplay();
       if (reduceMotion || !isVisible) return;
       autoplayTimer = window.setInterval(() => {
-        const atEnd = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+        const atEnd = track.scrollLeft >= maxScroll - 2;
         if (atEnd) track.scrollTo({ left: 0, behavior: 'smooth' });
         else move(1);
       }, 4500);
@@ -104,8 +130,8 @@ const tests = [
 
     previous.addEventListener('click', () => manualMove(-1));
     next.addEventListener('click', () => manualMove(1));
-    track.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
+    track.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', refresh);
     slider.addEventListener('mouseenter', stopAutoplay);
     slider.addEventListener('mouseleave', startAutoplay);
     section?.addEventListener('focusin', stopAutoplay);
@@ -117,7 +143,7 @@ const tests = [
       else stopAutoplay();
     }, { threshold: .25 });
     observer.observe(slider);
-    update();
+    refresh();
   }
 </script>
 

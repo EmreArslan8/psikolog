@@ -3,6 +3,10 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://selinunal.com',
+  trailingSlash: 'never',
   integrations: [sitemap()],
-  build: { format: 'file' },
+  build: {
+    format: 'directory',
+    inlineStylesheets: 'always',
+  },
 });

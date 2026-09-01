@@ -98,19 +98,32 @@ if (quoteSlider) {
 }
 
 if (menuButton && navigation) {
+  const menuLabel = menuButton.querySelector('.sr-only');
+
+  const closeMenu = () => {
+    menuButton.setAttribute('aria-expanded', 'false');
+    if (menuLabel) menuLabel.textContent = 'Menüyü aç';
+    navigation.classList.remove('is-open');
+  };
+
   menuButton.addEventListener('click', () => {
     const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
     menuButton.setAttribute('aria-expanded', String(!isOpen));
+    if (menuLabel) menuLabel.textContent = isOpen ? 'Menüyü aç' : 'Menüyü kapat';
     navigation.classList.toggle('is-open', !isOpen);
-    document.body.style.overflow = isOpen ? '' : 'hidden';
   });
 
   navigation.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      menuButton.setAttribute('aria-expanded', 'false');
-      navigation.classList.remove('is-open');
-      document.body.style.overflow = '';
-    });
+    link.addEventListener('click', closeMenu);
+  });
+
+  navigation.querySelector('.mobile-nav-backdrop')?.addEventListener('click', closeMenu);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && navigation.classList.contains('is-open')) {
+      closeMenu();
+      menuButton.focus();
+    }
   });
 }
 
@@ -134,9 +147,7 @@ if ('IntersectionObserver' in window) {
 }
 
 // İletişim formu
-// FORM_ENDPOINT: Web3Forms (https://api.web3forms.com/submit) veya Formspree
-// (https://formspree.io/f/xxxxxxx) uç noktası. Web3Forms kullanılacaksa
-// FORM_ACCESS_KEY de doldurulmalıdır. Boş bırakılırsa form gönderilmez.
+// Form Web3Forms üzerinden gönderilir; erişim anahtarı boşsa gönderim yapılmaz.
 const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
 const FORM_ACCESS_KEY = '2e9760cc-ef97-4432-9e14-367a3f4d6ae8';
 
@@ -228,4 +239,14 @@ if (counters.length && !window.matchMedia('(prefers-reduced-motion: reduce)').ma
     });
   }, { threshold: 0.6 });
   counters.forEach((el) => countObserver.observe(el));
+}
+
+// Header gölgesi yalnızca sayfa kaydırıldığında görünsün
+const siteHeader = document.querySelector('.site-header');
+if (siteHeader) {
+  const syncHeaderScroll = () => {
+    siteHeader.classList.toggle('is-scrolled', window.scrollY > 8);
+  };
+  syncHeaderScroll();
+  window.addEventListener('scroll', syncHeaderScroll, { passive: true });
 }

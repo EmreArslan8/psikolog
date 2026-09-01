@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1672 941" role="img" aria-labelledby="title desc">
+  <title id="title">Montessori eğitimi illüstrasyonu</title>
+  <desc id="desc">Doğal tonlarda raf, eğitim blokları ve bitki bulunan sakin bir öğrenme ortamı</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#edf0e5"/><stop offset="1" stop-color="#dce4d4"/></linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#b88a62"/><stop offset="1" stop-color="#d7af84"/></linearGradient>
+  </defs>
+  <rect width="1672" height="941" fill="url(#bg)"/>
+  <circle cx="1390" cy="130" r="245" fill="#f8f6ee" opacity=".65"/>
+  <path d="M0 745C270 670 465 714 735 773s546 28 937-74v242H0Z" fill="#cbd7c3"/>
+  <g transform="translate(230 180)">
+    <rect x="0" y="340" width="950" height="34" rx="17" fill="url(#wood)"/>
+    <rect x="42" y="374" width="30" height="310" rx="15" fill="#9d7656"/>
+    <rect x="875" y="374" width="30" height="310" rx="15" fill="#9d7656"/>
+    <g transform="translate(90 112)">
+      <rect x="0" y="155" width="122" height="72" rx="10" fill="#d89a78"/>
+      <rect x="135" y="105" width="122" height="122" rx="10" fill="#799177"/>
+      <rect x="270" y="48" width="122" height="179" rx="10" fill="#e3bd73"/>
+      <circle cx="540" cy="145" r="82" fill="#b6c7ae"/>
+      <path d="M494 145h92M540 99v92" stroke="#fffdf7" stroke-width="18" stroke-linecap="round"/>
+    </g>
+    <g transform="translate(1040 210)">
+      <path d="M80 335c-25-137-15-242 34-314 70 69 90 165 59 287" fill="#789076"/>
+      <path d="M130 327c18-122 78-203 178-244 13 119-35 211-144 278" fill="#9caf95"/>
+      <path d="M81 326C32 222-29 165-102 153c-4 110 47 184 153 222" fill="#5f745f"/>
+      <path d="M-5 342h276l-35 204H30Z" fill="#c68d66"/>
+    </g>
+  </g>
+</svg>
