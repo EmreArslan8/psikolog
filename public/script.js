@@ -147,9 +147,9 @@ if ('IntersectionObserver' in window) {
 }
 
 // İletişim formu
-// Form Web3Forms üzerinden gönderilir; erişim anahtarı boşsa gönderim yapılmaz.
-const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
-const FORM_ACCESS_KEY = '2e9760cc-ef97-4432-9e14-367a3f4d6ae8';
+// Form, aynı domaindeki Vercel Function üzerinden Resend'e iletilir.
+// API anahtarı yalnızca sunucu ortamında tutulur; tarayıcıya gönderilmez.
+const FORM_ENDPOINT = '/api/contact';
 
 const contactForm = document.querySelector('[data-contact-form]');
 if (contactForm) {
@@ -173,15 +173,16 @@ if (contactForm) {
     // Bal küpü: bot doldurursa sessizce yok say
     if (contactForm.elements._gotcha && contactForm.elements._gotcha.value) return;
 
-    if (!FORM_ENDPOINT) {
-      setStatus('Form altyapısı henüz bağlanmadı. Bu arada psk.selinunal@gmail.com adresine yazabilirsiniz.', 'error');
-      return;
-    }
-
     const data = new FormData(contactForm);
-    data.delete('_gotcha');
-    if (FORM_ACCESS_KEY) data.append('access_key', FORM_ACCESS_KEY);
-    data.append('subject_line', 'selinunal.com — yeni randevu talebi');
+    const payload = {
+      name: data.get('name'),
+      email: data.get('email'),
+      preference: data.get('preference'),
+      topic: data.get('topic'),
+      message: data.get('message'),
+      consent: data.get('consent') === 'evet',
+      website: data.get('_gotcha')
+    };
 
     submitButton.setAttribute('aria-busy', 'true');
     setStatus('Gönderiliyor…');
@@ -189,14 +190,15 @@ if (contactForm) {
     try {
       const response = await fetch(FORM_ENDPOINT, {
         method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: data
+        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
       });
-      if (!response.ok) throw new Error(response.status);
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.message || response.status);
       contactForm.reset();
-      setStatus('Mesajınız iletildi. En kısa sürede size dönüş yapacağım.');
+      setStatus(result.message || 'Mesajınız iletildi. En kısa sürede size dönüş yapacağım.');
     } catch (error) {
-      setStatus('Mesaj gönderilemedi. Lütfen psk.selinunal@gmail.com adresine yazın.', 'error');
+      setStatus(error.message || 'Mesaj gönderilemedi. Lütfen psk.selinunal@gmail.com adresine yazın.', 'error');
     } finally {
       submitButton.removeAttribute('aria-busy');
     }
@@ -205,7 +207,7 @@ if (contactForm) {
 
 // Destek alanı etiketleri: tıklanınca konu alanını doldurur
 const topicPills = document.querySelectorAll('.topic-pill');
-const subjectField = document.querySelector('[data-contact-form] [name="subject"]');
+const subjectField = document.querySelector('[data-subject-field]');
 if (topicPills.length && subjectField) {
   topicPills.forEach((pill) => {
     pill.addEventListener('click', () => {
