@@ -3,6 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/theme.css';
 import '../styles/styles.css';
+import { business } from '../data/business';
 
 const {
   title,
@@ -31,7 +32,7 @@ const url = new URL(canonical, Astro.site).href;
   <meta name="robots" content={robots}>
   <meta name="author" content="Psikolog Selin Ünal">
   <meta name="geo.region" content="TR-78">
-  <meta name="geo.placename" content="Karabük">
+  <meta name="geo.placename" content={`${business.address.district}, ${business.address.province}`}>
   <meta property="og:type" content="website">
   <meta property="og:locale" content="tr_TR">
   <meta property="og:site_name" content="Psikolog Selin Ünal">

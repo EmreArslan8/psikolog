@@ -1,4 +1,5 @@
 ---
+import { business, mapsDirectionsUrl } from '../data/business';
 ---
   <footer class="site-footer">
     <div class="footer-inner">
@@ -29,16 +30,17 @@
       </nav>
       <div class="footer-col footer-contact">
         <h3>İletişim</h3>
+        <a href={business.phone.href}><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg> {business.phone.display}</a>
         <a href="mailto:psk.selinunal@gmail.com"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> psk.selinunal@gmail.com</a>
         <a href="https://www.instagram.com/psk.selinunal/" target="_blank" rel="noopener"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg> @psk.selinunal</a>
-        <p><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> Karabük Merkez, Karabük</p>
-        <p><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Hafta içi 09.00–19.00 · Cumartesi 10.00–16.00</p>
+        <p><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> <a href={mapsDirectionsUrl} target="_blank" rel="noopener">{business.address.full}</a></p>
+        <p><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> {business.hours.display} · {business.hours.closedNote}</p>
         <a class="footer-cta" href="/#iletisim">Randevu için yazın <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>Karabük, Safranbolu, Eskipazar, Yenice, Eflani ve Ovacık’tan danışanlara yüz yüze; Türkiye genelinde online destek.</p>
-      <p>© <span data-year></span> Psikolog Selin Ünal — Karabük. Tüm hakları saklıdır.</p>
+      <p>Safranbolu, Karabük, Eskipazar, Yenice, Eflani ve Ovacık’tan danışanlara yüz yüze; Türkiye genelinde online destek.</p>
+      <p>© <span data-year></span> Psikolog Selin Ünal — Safranbolu / Karabük. Tüm hakları saklıdır.</p>
     </div>
   </footer>
 
