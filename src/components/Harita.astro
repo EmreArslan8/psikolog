@@ -1,8 +1,9 @@
 ---
+import { business, mapsEmbedUrl, mapsDirectionsUrl } from '../data/business';
 ---
   <section class="map-section" aria-label="Konum">
-    <iframe title="Psikolog Selin Ünal ofis konumu — Karabük" src="https://www.google.com/maps?q=Karab%C3%BCk%20Merkez%2C%20Karab%C3%BCk%2C%20T%C3%BCrkiye&amp;hl=tr&amp;z=14&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-    <div class="map-card reveal"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><div><span>Ofis Konumu</span><strong>Karabük Merkez</strong><p>Karabük ve çevresinde yüz yüze görüşmeler randevu ile gerçekleştirilir; Türkiye’nin her yerinden online görüşme yapılabilir.</p></div></div>
+    <iframe title={`${business.name} ofis konumu — ${business.address.district}, ${business.address.province}`} src={mapsEmbedUrl} loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    <div class="map-card reveal"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><div><span>Ofis Konumu</span><strong>{business.address.district} / {business.address.province}</strong><p>{business.address.full}</p><a class="map-directions" href={mapsDirectionsUrl} target="_blank" rel="noopener">Yol tarifi al <span aria-hidden="true">→</span></a></div></div>
   </section>
 
 <style>
@@ -32,6 +33,19 @@
 
   .map-card.is-visible { transform: translateY(-50%); }
 
+  .map-directions {
+    margin-top: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--brand);
+    font-size: var(--type-meta);
+    font-weight: 650;
+  }
+
+  .map-directions span { transition: transform .2s ease; }
+  .map-directions:hover span { transform: translateX(4px); }
+
   @media (max-width: 580px) {
     .map-section { height: clamp(230px, 62vw, 270px); }
     .map-card {
@@ -49,6 +63,7 @@
     .map-card span { margin-bottom: 3px; font-size: 8px; }
     .map-card strong { font-size: 20px; }
     .map-card p { display: none; }
+    .map-card .map-directions { display: none; }
     .map-card.is-visible { transform: none; }
   }
 </style>

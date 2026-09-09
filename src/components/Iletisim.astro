@@ -1,4 +1,5 @@
 ---
+import { business, mapsDirectionsUrl } from '../data/business';
 ---
 
 <section id="iletisim" class="contact-section">
@@ -18,8 +19,20 @@
           <div><strong>Instagram</strong><a href="https://www.instagram.com/psk.selinunal/" target="_blank" rel="noopener">@psk.selinunal</a></div>
         </div>
         <div class="contact-detail">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
+          <div><strong>Telefon</strong><a href={business.phone.href}>{business.phone.display}</a></div>
+        </div>
+        <div class="contact-detail">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><strong>Adres</strong><a href={mapsDirectionsUrl} target="_blank" rel="noopener">{business.address.full}</a></div>
+        </div>
+        <div class="contact-detail">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div><strong>Çalışma Saatleri</strong><span>{business.hours.display} · {business.hours.closedNote}</span></div>
+        </div>
+        <div class="contact-detail">
           <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
-          <div><strong>Görüşme</strong><span>Karabük’te yüz yüze, Türkiye genelinde online</span></div>
+          <div><strong>Görüşme</strong><span>{business.address.district} / {business.address.province}’te yüz yüze, Türkiye genelinde online</span></div>
         </div>
       </div>
     </div>
