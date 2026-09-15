@@ -141,7 +141,7 @@ import { business, mapsDirectionsUrl } from '../data/business';
     text-transform: uppercase;
   }
 
-  .contact-form input:not([type="checkbox"]),
+  .contact-form input:not([type="checkbox"]):not(.sr-only),
   .contact-form select,
   .contact-form textarea {
     width: 100%;
@@ -156,7 +156,7 @@ import { business, mapsDirectionsUrl } from '../data/business';
     transition: border-color .2s, box-shadow .2s, background .2s;
   }
 
-  .contact-form input:not([type="checkbox"]), .contact-form select { height: 56px; padding: 0 17px; }
+  .contact-form input:not([type="checkbox"]):not(.sr-only), .contact-form select { height: 56px; padding: 0 17px; }
   .contact-form textarea { min-height: 142px; padding: 16px 17px; resize: vertical; }
   .contact-form select { appearance: auto; }
   .contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--ink-mute); opacity: .72; }
