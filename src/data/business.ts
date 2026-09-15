@@ -1,7 +1,7 @@
 /**
  * İşletme künyesi — tek kaynak.
  *
- * Ad, adres ve telefon (NAP) Google İşletme Profili ile HARFİ HARFİNE aynı
+ * Ad ve adres (NAP) Google İşletme Profili ile HARFİ HARFİNE aynı
  * olmak zorundadır; yerel SEO'da tutarsızlık doğrudan sıralama kaybıdır.
  * Bu değerleri değiştirirken Google İşletme Profili'ni de güncelleyin.
  */
@@ -14,14 +14,6 @@ export const business = {
   email: 'psk.selinunal@gmail.com',
   instagram: 'https://www.instagram.com/psk.selinunal/',
   instagramHandle: '@psk.selinunal',
-
-  phone: {
-    display: '0542 131 78 94',
-    href: 'tel:+905421317894',
-    e164: '+905421317894',
-    intl: '+90 542 131 78 94',
-    whatsapp: 'https://wa.me/905421317894',
-  },
 
   address: {
     street: 'Emek Mahallesi, Muradiye Caddesi, Gelincik Sokak No: 2/7',
